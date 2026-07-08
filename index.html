@@ -64,14 +64,10 @@
     .ps-body{font-size:15px;line-height:1.78;opacity:.93;margin-bottom:28px;position:relative;max-width:420px}
     .ps-caption{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.2);border-radius:4px;padding:8px 14px;font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;position:relative}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red-glow);border:1px solid var(--red);border-radius:4px;padding:5px 13px;font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
-    .hero-logo{margin-bottom:22px;position:relative;width:fit-content}
-    .hero-logo img{height:80px;width:auto;mix-blend-mode:screen;position:relative;z-index:1;animation:logoFloatIn 1.4s cubic-bezier(.34,1.56,.64,1) both, logoBob 4.5s ease-in-out 1.4s infinite}
+    .hero-logo{margin-bottom:22px}
+    .hero-logo img{height:80px;width:auto;mix-blend-mode:screen;animation:logoFloatIn 1.4s cubic-bezier(.34,1.56,.64,1) both, logoBob 4.5s ease-in-out 1.4s infinite}
     @keyframes logoFloatIn{0%{opacity:0;transform:translateY(-55px) rotate(-4deg)}55%{opacity:1;transform:translateY(10px) rotate(2deg)}75%{transform:translateY(-5px) rotate(-1deg)}100%{opacity:1;transform:translateY(0) rotate(0)}}
     @keyframes logoBob{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-11px) rotate(1.2deg)}}
-    .logo-ripple{position:absolute;left:50%;bottom:-4px;width:64px;height:16px;border:2px solid rgba(96,170,230,.55);border-radius:50%;transform:translateX(-50%) scale(.25);opacity:0;pointer-events:none;z-index:0;animation:rippleOut 3.6s ease-out infinite}
-    .logo-ripple.r2{animation-delay:1.2s}
-    .logo-ripple.r3{animation-delay:2.4s}
-    @keyframes rippleOut{0%{transform:translateX(-50%) scale(.25);opacity:.75}70%{opacity:.18}100%{transform:translateX(-50%) scaleX(3.4) scaleY(2);opacity:0}}
     .hero-h1{font-family:var(--font-d);font-size:clamp(50px,6vw,90px);line-height:.93;letter-spacing:.01em;margin-bottom:10px;animation:fsu .7s .1s ease both}
     .hero-h1 .r{color:var(--red)}
     .hero-sub{font-family:var(--font-c);font-size:clamp(15px,2vw,20px);font-weight:600;color:var(--gray-light);letter-spacing:.05em;text-transform:uppercase;margin-bottom:26px;animation:fsu .7s .17s ease both}
@@ -378,12 +374,7 @@
     <!-- LEFT -->
     <div>
       <div class="hero-badge">⭐ Google Verified — #1 Epoxy Contractor in the Lake of the Ozarks</div>
-      <div class="hero-logo">
-        <div class="logo-ripple"></div>
-        <div class="logo-ripple r2"></div>
-        <div class="logo-ripple r3"></div>
-        <img src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))"/>
-      </div>
+      <div class="hero-logo"><img src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))"/></div>
       <h1 class="hero-h1">Lake of the<br/>Ozarks' <span class="r">Premier</span><br/>Floor Coatings</h1>
       <p class="hero-sub">Osage Beach · Camdenton · Lake Ozark · Versailles · Eldon · Laurie &amp; 75-Mile Radius</p>
       <div class="hero-trust">
