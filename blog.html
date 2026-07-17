@@ -52,6 +52,21 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:36px 40px
 .s-call{background:var(--red);color:var(--white)}.s-quote{background:var(--bg3);color:var(--white);border:1px solid var(--border)}
 .rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
 .empty-state{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:64px 32px;text-align:center;max-width:640px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bc{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .25s,transform .25s;display:flex;flex-direction:column}
+.bc:hover{border-color:rgba(40,116,184,.4);transform:translateY(-3px)}
+.bc-img{height:190px;overflow:hidden;background:var(--bg4)}
+.bc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.bc:hover .bc-img img{transform:scale(1.07)}
+.bc-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.bc-cat{font-family:var(--font-c);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.bc-meta{font-size:11px;color:var(--gray);font-family:var(--font-c);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.bc-t{font-family:var(--font-c);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;line-height:1.2}
+.bc-d{font-size:13px;color:var(--gray-light);line-height:1.65;flex:1}
+.bc-lnk{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-top:14px;transition:gap .2s}
+.bc-lnk:hover{gap:10px}
+@media(max-width:1100px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
 @media(max-width:768px){nav{padding:0 18px}.nav-links{display:none}.hamburger{display:flex}.sec{padding:52px 18px}.topbar{display:none}.sticky-mob{display:flex}body{padding-bottom:70px}.page-hero{padding:44px 18px}.footer-bot{flex-direction:column;text-align:center}}
 </style>
 </head>
@@ -75,12 +90,66 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:36px 40px
 
 <section class="sec sec-dk">
   <div class="inner">
-    <div class="empty-state rev">
-      <div style="font-family:var(--font-d);font-size:32px;margin-bottom:12px">New Posts Coming Soon</div>
-      <p style="font-size:15px;color:var(--gray-light);line-height:1.7;margin-bottom:24px">We're building out our library of guides on epoxy and polyaspartic floor coatings — pricing, colors, prep, and more. In the meantime, check out our FAQ or give us a call.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="/faq.html" class="btn btn-red">View FAQ</a>
-        <a href="/contact.html" class="btn btn-outline">Get Free Quote</a>
+    <div class="blog-grid rev">
+      <div class="bc">
+        <div class="bc-img"><img src="epoxy-garage-floor-springfield-mo-1.jpg" alt="Epoxy garage floor cost guide" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">Buyer's Guide</div>
+          <div class="bc-meta">May 2025 &middot; 6 min read</div>
+          <div class="bc-t">How Much Does Epoxy Flooring Cost?</div>
+          <p class="bc-d">A real-world pricing guide for flake, metallic, and commercial coating systems around the Lake of the Ozarks.</p>
+          <a href="/epoxy-garage-floor-cost-missouri.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bc-img"><img src="epoxy-garage-floor-springfield-mo-3.jpg" alt="Polyaspartic vs epoxy floor comparison" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">Product Comparison</div>
+          <div class="bc-meta">April 2025 &middot; 8 min read</div>
+          <div class="bc-t">Polyaspartic vs Epoxy: Which Is Better?</div>
+          <p class="bc-d">An honest side-by-side comparison — durability, UV stability, cure time, cost, and long-term performance.</p>
+          <a href="/polyaspartic-vs-epoxy.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bc-img"><img src="full-flake-garage-floor-springfield-mo-1.jpg" alt="Why garage floors fail - diamond grinding prep" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">Homeowner Education</div>
+          <div class="bc-meta">March 2025 &middot; 5 min read</div>
+          <div class="bc-t">Why Garage Floor Coatings Fail</div>
+          <p class="bc-d">The truth about peeling floors, failed DIY kits, and cheap installs — and what proper installation looks like.</p>
+          <a href="/why-garage-floors-fail.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bc-img"><img src="epoxy-garage-floor-springfield-mo-4.jpg" alt="Best garage floor coating for Missouri weather" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">Missouri Climate</div>
+          <div class="bc-meta">February 2025 &middot; 5 min read</div>
+          <div class="bc-t">Best Garage Floor Coating for the Weather Here</div>
+          <p class="bc-d">Freeze/thaw cycles, humidity, and brutal summers create unique challenges. Here's what actually holds up.</p>
+          <a href="/best-garage-floor-coating-missouri-weather.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bc-img"><img src="epoxy-garage-floor-springfield-mo-5.jpg" alt="DIY epoxy kit vs professional floor coating" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">DIY Warning</div>
+          <div class="bc-meta">January 2025 &middot; 6 min read</div>
+          <div class="bc-t">The Truth About DIY Epoxy Kits</div>
+          <p class="bc-d">They look appealing at $200, but the results rarely last. Here's exactly why big-box kits fail.</p>
+          <a href="/diy-epoxy-kits-truth.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
+      </div>
+      <div class="bc">
+        <div class="bc-img"><img src="epoxy-garage-floor-springfield-mo-12.jpg" alt="Epoxy garage floor home value" loading="lazy"/></div>
+        <div class="bc-body">
+          <div class="bc-cat">Home Value</div>
+          <div class="bc-meta">December 2024 &middot; 5 min read</div>
+          <div class="bc-t">Does an Epoxy Floor Increase Home Value?</div>
+          <p class="bc-d">A finished garage floor is one of the highest-ROI upgrades you can make. Here's what agents and appraisers say.</p>
+          <a href="/epoxy-floor-home-value.html" class="bc-lnk">Read Article &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
