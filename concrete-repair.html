@@ -125,7 +125,8 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:52px 40px
 @media(max-width:768px){nav{padding:0 18px}.nav-links{display:none}.hamburger{display:flex}.sec{padding:52px 18px}.topbar{display:none}.sticky-mob{display:flex}body{padding-bottom:70px}.gallery-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.footer-bot{flex-direction:column;text-align:center}.areas-wrap{gap:7px}}
 
 .nav-links li.areas-drop{position:relative}
-.nav-links li.areas-drop>a{display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.nav-links li.areas-drop>a{cursor:pointer}
+.nav-links li.areas-drop .caret{margin-left:4px;display:inline-block}
 .nav-links li.areas-drop .caret{font-size:10px}
 .areas-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--black);border:1px solid var(--border);border-top:2px solid var(--red);border-radius:0 0 8px 8px;padding:14px;grid-template-columns:repeat(2,1fr);gap:1px 22px;min-width:380px;z-index:1001;box-shadow:0 24px 50px rgba(0,0,0,.55)}
 .nav-links li.areas-drop:hover .areas-dropdown{display:grid}
