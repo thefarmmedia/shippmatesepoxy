@@ -48,8 +48,8 @@
     /* HERO */
     .hero{min-height:92vh;position:relative;display:flex;align-items:center;overflow:hidden}
     .hero-bg{position:absolute;inset:0;z-index:0}
-    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 82%}
-    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.66) 45%,rgba(0,0,0,.12) 100%)}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.93) 0%,rgba(0,0,0,.80) 45%,rgba(0,0,0,.42) 100%)}
     .hero-inner{position:relative;z-index:1;max-width:1300px;margin:0 auto;width:100%;padding:70px 40px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
     /* PHOTO SHOWCASE */
     .photo-showcase{background:var(--black);padding:0;position:relative;overflow:hidden}
@@ -144,6 +144,25 @@
     .sc-lnk{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-top:15px;transition:gap .2s}
     .sc-lnk:hover{gap:10px}
 
+    /* ACID STAINING FEATURE */
+    .acid-feature{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .af-top{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;margin-bottom:34px}
+    .af-lead{font-size:16px;color:var(--gray-light);line-height:1.8;margin-bottom:20px}
+    .af-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0 0 28px;padding:0}
+    .af-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--gray-light);line-height:1.6}
+    .af-list li::before{content:"✓";color:var(--red);font-weight:900;flex-shrink:0;margin-top:1px}
+    .af-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .af-hero-img{border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.6);aspect-ratio:16/9}
+    .af-hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .af-hero-img:hover img{transform:scale(1.04)}
+    .af-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .af-tile{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;display:block;transition:border-color .25s,transform .25s}
+    .af-tile:hover{border-color:rgba(40,116,184,.55);transform:translateY(-3px)}
+    .af-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+    .af-tile:hover img{transform:scale(1.07)}
+    .af-cap{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 8px;background:linear-gradient(to top,rgba(0,0,0,.9),transparent);font-family:var(--font-c);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white)}
+    @media(max-width:1100px){.af-top{grid-template-columns:1fr;gap:32px}.af-strip{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:768px){.af-strip{grid-template-columns:repeat(2,1fr)}}
     /* PROCESS */
     .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
     .proc::before{content:'';position:absolute;top:35px;left:10%;right:10%;height:2px;background:linear-gradient(to right,var(--red),transparent);z-index:0}
@@ -386,7 +405,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-concrete-floor.jpg" alt="Acid stained concrete entry porch - Shipp-Mates Epoxy of the Ozarks Osage Beach MO"/>
+    <img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-covered-pavilion.jpg" alt="Acid stained concrete covered pavilion and outdoor kitchen - Shipp-Mates Epoxy of the Ozarks Osage Beach MO"/>
   </div>
   <div class="hero-inner">
     <!-- LEFT -->
@@ -646,6 +665,41 @@
           <a href="/concrete-repair.html" class="sc-lnk">Learn More →</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACID STAINING FEATURE -->
+<section class="sec sec-dk acid-feature">
+  <div class="inner">
+    <div class="af-top rev">
+      <div class="af-copy">
+        <span class="sec-label">One of Our Most Requested Services</span>
+        <h2 class="sec-title">Acid Stained<br/><span style="color:var(--red)">Concrete</span></h2>
+        <div class="divider"></div>
+        <p class="af-lead">Acid staining isn't a coating that sits on top of your slab — it's a chemical reaction that permanently etches translucent, marbled color into the concrete itself. The result looks closer to natural stone or aged leather than a painted floor, and because it reacts with your specific slab, no two floors ever come out the same.</p>
+        <ul class="af-list">
+          <li>Rich, variegated color that can't be reproduced</li>
+          <li>Beautiful indoors and on covered patios alike</li>
+          <li>Sealed with a professional-grade protective topcoat</li>
+          <li>Full diamond grinding and crack repair before staining</li>
+        </ul>
+        <div class="af-ctas">
+          <a href="/acid-staining.html" class="btn btn-red">Explore Acid Staining →</a>
+          <a href="tel:4172556890" class="btn btn-outline">📞 417.255.6890</a>
+        </div>
+      </div>
+      <div class="af-hero-img">
+        <img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-outdoor-kitchen.jpg" alt="Acid stained concrete outdoor kitchen and pavilion — Shipp-Mates Epoxy of the Ozarks" loading="lazy"/>
+      </div>
+    </div>
+    <div class="af-strip rev">
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-covered-pavilion.jpg" alt="Acid stained concrete covered pavilion Lake of the Ozarks" loading="lazy"/><span class="af-cap">Covered Pavilion</span></a>
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-poolside-patio.jpg" alt="Acid stained concrete poolside patio Lake of the Ozarks" loading="lazy"/><span class="af-cap">Poolside Patio</span></a>
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-open-living-space.jpg" alt="Acid stained concrete open living space Lake of the Ozarks" loading="lazy"/><span class="af-cap">Open Living Space</span></a>
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-lake-of-the-ozarks-acid-stained-interior-floor.jpg" alt="Acid stained concrete interior floor Lake of the Ozarks" loading="lazy"/><span class="af-cap">Interior Floor</span></a>
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-camdenton-mo-decorative-acid-stain-floor.jpg" alt="Decorative acid stained concrete living area Camdenton MO" loading="lazy"/><span class="af-cap">Kitchen &amp; Living</span></a>
+      <a href="/acid-staining.html" class="af-tile"><img src="shipmates-epoxy-osage-beach-mo-acid-stained-concrete-patio.jpg" alt="Acid stained concrete shop floor Osage Beach MO" loading="lazy"/><span class="af-cap">Shop Floor</span></a>
     </div>
   </div>
 </section>
