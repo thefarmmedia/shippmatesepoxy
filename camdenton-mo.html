@@ -184,7 +184,7 @@
       <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
       <div class="fg"><label>Service</label><select><option value="">Select...</option><option>Garage Floor</option><option>Basement/ManCave</option><option>Metallic Epoxy</option><option>Acid Staining</option><option>Patio/Outdoor</option><option>Commercial</option><option>Other</option></select></div>
       <div class="fg"><label>Project Details</label><textarea placeholder="Tell us about your floor..."></textarea></div>
-      <button class="btn btn-red fsub" onclick="submitForm()">Submit Quote Request →</button>
+      <button class="btn btn-red fsub" onclick="submitForm(this)">Submit Quote Request →</button>
       <p class="fnote">🔒 Private. No spam. Response same day.</p>
     </div>
   </div>
@@ -292,7 +292,88 @@
   document.querySelectorAll(".fq").forEach(q=>{q.addEventListener("click",()=>{const item=q.closest(".fi"),open=item.classList.contains("open");document.querySelectorAll(".fi").forEach(i=>i.classList.remove("open"));if(!open)item.classList.add("open");});});
   const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");obs.unobserve(x.target);}});},{threshold:0.08});
   document.querySelectorAll(".rev").forEach(r=>obs.observe(r));
-  function submitForm(){alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417.255.6890");}
+  function submitForm(btn){
+    var box = leadFormBox(btn);
+    var fields = {};
+    box.querySelectorAll('.fg').forEach(function(g){
+      var lab = g.querySelector('label');
+      var el  = g.querySelector('input,select,textarea');
+      if (!lab || !el) return;
+      fields[lab.textContent.trim()] = (el.value || '').trim();
+    });
+    function find(re){
+      var k = Object.keys(fields).filter(function(k){ return re.test(k); })[0];
+      return k ? fields[k] : '';
+    }
+    var first = find(/first/i), last = find(/last/i);
+    var phone = find(/phone/i), email = find(/e-?mail/i);
+    if (!first && !last){ alert('Please enter your name so we know who to contact.'); return; }
+    if (!phone && !email){ alert('Please add a phone number or email so we can reach you.'); return; }
+
+    var label = btn ? btn.textContent : '';
+    if (btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
+
+    var payload = {
+      firstName: first,
+      lastName: last,
+      name: (first + ' ' + last).trim(),
+      phone: phone,
+      email: email,
+      city_zip: find(/city|zip|postal/i),
+      service: find(/service|coating system/i),
+      sqft: find(/square|sq ?ft|footage/i),
+      notes: find(/detail|project|message|tell us/i),
+      source: 'Shipp-Mates Epoxy of the Ozarks Website Quote Form',
+      page: window.location.href,
+      page_title: document.title,
+      all_fields: fields
+    };
+
+    sendLead(payload).then(function(){
+      if (btn){ btn.disabled = false; btn.textContent = label; }
+      alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417.255.6890");
+    });
+  }
+
+  function leadFormBox(btn){
+    var el = btn;
+    while (el && el !== document.body){
+      if (el.querySelectorAll && el.querySelectorAll('.fg').length >= 3) return el;
+      el = el.parentElement;
+    }
+    return document.body;
+  }
+
+  var LEAD_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/T8pqPmxbWrTDWfYiPoM4/webhook-trigger/1c87b78f-c8d0-424b-ae73-ca2810e3ede7';
+
+  function sendLead(payload){
+    var body = JSON.stringify(payload);
+    function attempt(n){
+      return fetch(LEAD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        keepalive: true
+      }).then(function(res){
+        if (res.ok) return true;
+        console.error('Lead webhook responded ' + res.status);
+        return n < 2 ? attempt(n + 1) : beacon();
+      }).catch(function(err){
+        console.error('Lead webhook attempt ' + n + ' failed:', err);
+        return n < 2 ? attempt(n + 1) : beacon();
+      });
+    }
+    function beacon(){
+      try {
+        if (navigator.sendBeacon){
+          return navigator.sendBeacon(LEAD_WEBHOOK_URL,
+            new Blob([body], { type: 'text/plain;charset=UTF-8' }));
+        }
+      } catch (err){ console.error('Lead beacon fallback failed:', err); }
+      return false;
+    }
+    return attempt(1);
+  }
 </script>
 </body>
 </html>
