@@ -665,7 +665,7 @@
 <script>
   // ── LEAD WEBHOOK ─────────────────────────────────────────────────────────
   // TODO: point this at Shipp-Mates' own CRM/webhook endpoint before launch.
-  const WEBHOOK_URL = '';
+  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/T8pqPmxbWrTDWfYiPoM4/webhook-trigger/1c87b78f-c8d0-424b-ae73-ca2810e3ede7';
 
   // ── STATE ────────────────────────────────────────────────────────────────
   let state = {
@@ -780,6 +780,37 @@
     document.getElementById('conn1').classList.remove('done');
   }
 
+  // ── LEAD DELIVERY ─────────────────────────────────────────────────────────
+  async function sendLead(payload) {
+    const body = JSON.stringify(payload);
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: body,
+          keepalive: true
+        });
+        if (res.ok) return true;
+        console.error('Lead webhook responded ' + res.status);
+      } catch (err) {
+        console.error('Lead webhook attempt ' + attempt + ' failed:', err);
+      }
+    }
+    // Last resort: sendBeacon skips the CORS preflight and survives page unload.
+    try {
+      if (navigator.sendBeacon) {
+        return navigator.sendBeacon(
+          WEBHOOK_URL,
+          new Blob([body], { type: 'text/plain;charset=UTF-8' })
+        );
+      }
+    } catch (err) {
+      console.error('Lead beacon fallback failed:', err);
+    }
+    return false;
+  }
+
   // ── REVEAL PRICE (FORM SUBMIT) ────────────────────────────────────────────
   async function revealPrice(e) {
     e.preventDefault();
@@ -821,17 +852,10 @@
       estimate_range: `$${est.low.toLocaleString()} - $${est.high.toLocaleString()}`
     };
 
-    // Fire to lead webhook (disabled until Shipp-Mates' own endpoint is configured)
+    // Fire to lead webhook. Retries once, then falls back to sendBeacon so a
+    // lead is not lost just because the first request failed.
     if (WEBHOOK_URL) {
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.error('Webhook error:', err);
-      }
+      await sendLead(payload);
     }
 
     // Show result

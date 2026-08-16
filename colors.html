@@ -940,8 +940,7 @@
       request_type: 'Project Photos by Color'
     };
 
-    // TODO: point this at Shipp-Mates' own CRM/webhook endpoint before launch.
-    var WEBHOOK_URL = '';
+    var WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/T8pqPmxbWrTDWfYiPoM4/webhook-trigger/1c87b78f-c8d0-424b-ae73-ca2810e3ede7';
     if (WEBHOOK_URL) {
       fetch(WEBHOOK_URL, {
         method: 'POST',
