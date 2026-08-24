@@ -442,20 +442,30 @@
                 <div class="opt-title">Full Broadcast Flake</div>
                 <div class="opt-desc">Most popular — textured, slip-resistant</div>
               </div>
+              <div class="opt-card" data-group="system" data-val="quartz" onclick="selectOption(this,'system')">
+                <div class="opt-icon">🪨</div>
+                <div class="opt-title">Quartz Broadcast</div>
+                <div class="opt-desc">Dense quartz aggregate, high durability</div>
+              </div>
               <div class="opt-card" data-group="system" data-val="metallic" onclick="selectOption(this,'system')">
                 <div class="opt-icon">🌊</div>
                 <div class="opt-title">Metallic Epoxy</div>
                 <div class="opt-desc">Premium liquid-metal artistry</div>
               </div>
-              <div class="opt-card" data-group="system" data-val="solid" onclick="selectOption(this,'system')">
+              <div class="opt-card" data-group="system" data-val="acid" onclick="selectOption(this,'system')">
                 <div class="opt-icon">🎨</div>
-                <div class="opt-title">Solid Color</div>
-                <div class="opt-desc">Clean, uniform high-gloss look</div>
+                <div class="opt-title">Acid Stain</div>
+                <div class="opt-desc">Marbled color etched into the concrete</div>
               </div>
-              <div class="opt-card" data-group="system" data-val="commercial" onclick="selectOption(this,'system')">
-                <div class="opt-icon">💼</div>
-                <div class="opt-title">Commercial Grade</div>
-                <div class="opt-desc">Heavy-duty industrial system</div>
+              <div class="opt-card" data-group="system" data-val="grindseal" onclick="selectOption(this,'system')">
+                <div class="opt-icon">💎</div>
+                <div class="opt-title">Grind &amp; Seal</div>
+                <div class="opt-desc">Polished, sealed concrete — most affordable</div>
+              </div>
+              <div class="opt-card" data-group="system" data-val="outdoor" onclick="selectOption(this,'system')">
+                <div class="opt-icon">☀️</div>
+                <div class="opt-title">Outdoor Coating</div>
+                <div class="opt-desc">UV-stable patios, pool decks, driveways</div>
               </div>
             </div>
           </div>
@@ -729,24 +739,32 @@
     document.getElementById('previewRange').classList.remove('visible'); // stays blurred until unlocked
   }
 
+  // Published per-sq-ft pricing by coating system.
+  const SYSTEMS = {
+    flake:     { low: 6.00,  high: 7.50,  label: 'full broadcast flake system' },
+    quartz:    { low: 6.00,  high: 8.00,  label: 'quartz broadcast system' },
+    metallic:  { low: 14.00, high: 16.00, label: 'metallic epoxy system' },
+    acid:      { low: 5.00,  high: 6.00,  label: 'acid stained concrete finish' },
+    grindseal: { low: 4.00,  high: 5.00,  label: 'grind and seal finish' },
+    outdoor:   { low: 8.00,  high: 9.00,  label: 'outdoor coating system' }
+  };
+
   function calcEstimate() {
     const sqft = state.sqft || 0;
+    const sys = SYSTEMS[state.system] || SYSTEMS.flake;
 
-    // Base rates per sq ft
-    let lowRate = 5.50;
-    let highRate = 7.50;
+    // Concrete condition and layout do not push the quote past the published
+    // range for the system. They lift the bottom of that range toward the top,
+    // so the estimate always stays inside the advertised per-sq-ft pricing.
+    let shift = 0;
+    if (state.condition === 'average' || state.condition === 'unknown') shift += 0.25;
+    if (state.condition === 'rough') shift += 0.50;
+    if (state.layout === 'medium') shift += 0.15;
+    if (state.layout === 'complex') shift += 0.35;
+    if (shift > 1) shift = 1;
 
-    // System modifier
-    if (state.system === 'metallic') { lowRate += 1.00; highRate += 1.50; }
-    if (state.system === 'commercial') { lowRate += 0.50; highRate += 1.00; }
-
-    // Condition modifier
-    if (state.condition === 'average' || state.condition === 'unknown') { lowRate += 0.50; highRate += 0.50; }
-    if (state.condition === 'rough') { lowRate += 0.75; highRate += 1.00; }
-
-    // Layout modifier
-    if (state.layout === 'medium') { lowRate += 0.25; highRate += 0.25; }
-    if (state.layout === 'complex') { lowRate += 0.75; highRate += 1.00; }
+    const lowRate = Math.round((sys.low + (sys.high - sys.low) * shift) * 100) / 100;
+    const highRate = sys.high;
 
     const low = Math.round(sqft * lowRate / 50) * 50;
     const high = Math.round(sqft * highRate / 50) * 50;
@@ -887,15 +905,10 @@
       patio: 'patio/outdoor coating',
       commercial: 'commercial floor coating'
     };
-    const systemLabels = {
-      flake: 'full broadcast flake system',
-      metallic: 'metallic epoxy system',
-      solid: 'solid color system',
-      commercial: 'commercial broadcast system'
-    };
+    const sysLabel = (SYSTEMS[state.system] || SYSTEMS.flake).label;
 
     document.getElementById('resultDesc').innerHTML =
-      `Based on <strong>${est.sqft.toLocaleString()} sq ft</strong>, your ${typeLabels[state.type] || 'floor coating'} using a <strong>${systemLabels[state.system] || 'polyaspartic system'}</strong>, your project currently falls in the range above. The next step is a free on-site visit where we measure your space, assess the concrete, and give you a written quote.`;
+      `Based on <strong>${est.sqft.toLocaleString()} sq ft</strong>, your ${typeLabels[state.type] || 'floor coating'} using a <strong>${sysLabel}</strong>, your project currently falls in the range above. The next step is a free on-site visit where we measure your space, assess the concrete, and give you a written quote.`;
 
     // Show result, hide unlock form
     document.getElementById('step2Panel').style.display = 'none';
