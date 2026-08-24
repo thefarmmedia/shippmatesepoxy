@@ -261,6 +261,29 @@
 .site-credit{max-width:1300px;margin:18px auto 0;padding-top:14px;border-top:1px solid var(--border);text-align:center;font-family:var(--font-c);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--gray)}
 .site-credit a{color:var(--gray-light);transition:color .2s}
 .site-credit a:hover{color:var(--red)}
+
+/* MOBILE OVERFLOW GUARD */
+body{overflow-wrap:break-word}
+.sticky-mob{max-width:100%;box-sizing:border-box}
+.sticky-mob a{min-width:0;overflow:hidden;text-overflow:ellipsis}
+
+@media(max-width:768px){
+li{min-width:0}
+.prose ul li,.cov-list li,ul li{overflow-wrap:anywhere}
+
+[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+[style*="grid-template-columns"]>*{min-width:0}
+.colors-grid{grid-template-columns:repeat(2,1fr)!important}
+.color-name{font-size:18px;overflow-wrap:anywhere}
+table{display:block;width:100%;max-width:100%;overflow-x:auto}
+}
+@media(max-width:560px){
+.ci-item,.ci-item>*,.ci-item>*>*{min-width:0}
+.ci-item{flex-wrap:wrap}
+
+.af-top,.areas-g,.ba-grid,.blog-grid,.calc-grid,.compare-grid,.contact-g,.contact-grid,.coverage-grid,.frow,.gallery-grid,.hero-inner,.installed-grid,.layer-grid,.path-choice,.ph-inner,.photo-showcase-in,.pillars,.price-grid,.proc,.process-photos,.result-includes,.rev-grid,.services-grid,.stats-in,.story-grid,.system-grid,.team-grid,.two-col,.two-col-prose,.values-grid,.why-grid,.footer-top{grid-template-columns:1fr!important}
+.af-top>*,.areas-g>*,.ba-grid>*,.blog-grid>*,.calc-grid>*,.compare-grid>*,.contact-g>*,.contact-grid>*,.coverage-grid>*,.frow>*,.gallery-grid>*,.hero-inner>*,.installed-grid>*,.layer-grid>*,.path-choice>*,.ph-inner>*,.photo-showcase-in>*,.pillars>*,.price-grid>*,.proc>*,.process-photos>*,.result-includes>*,.rev-grid>*,.services-grid>*,.stats-in>*,.story-grid>*,.system-grid>*,.team-grid>*,.two-col>*,.two-col-prose>*,.values-grid>*,.why-grid>*,.footer-top>*{min-width:0}
+}
 </style>
 </head>
 <body>
@@ -338,7 +361,6 @@
       <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-c);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-light)"><span style="color:#4caf50">✓</span>No commitment required</div>
     </div>
     <a href="tel:4172556890" class="path-btn pb-outline" style="margin-bottom:10px">📞 Call 417.255.6890</a>
-    <button class="path-btn pb-outline" onclick="openBooking()" style="margin-top:0;border-color:rgba(40,116,184,.4);color:var(--red)">📅 Book Online Instead</button>
   </div>
 
   <div class="path-divider"><div class="or-bubble">OR</div></div>
@@ -554,7 +576,6 @@
 
         <div class="result-ctas">
           <a href="tel:4172556890" class="rc-btn rc-red">📞 Call to Schedule Install</a>
-          <button class="rc-btn rc-outline" onclick="showBookingSection()">📅 Book Estimate Online</button>
         </div>
 
         <div class="result-disclaimer">
@@ -587,7 +608,6 @@
         <div style="font-family:var(--font-d);font-size:28px;line-height:.95;margin-bottom:10px">Call Us Now</div>
         <p style="font-size:13px;color:var(--gray-light);line-height:1.6;margin-bottom:16px">Talk to the people who do the work. Get your questions answered and schedule a free on-site estimate.</p>
         <a href="tel:4172556890" style="display:block;background:var(--bg4);border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:13px;font-family:var(--font-c);font-size:16px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:center;transition:all .2s;margin-bottom:10px" onmouseover="this.style.borderColor='white'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">📞 417.255.6890</a>
-        <button onclick="openBooking()" style="display:block;width:100%;background:var(--red-glow);border:1px solid rgba(40,116,184,.4);border-radius:6px;padding:12px;font-family:var(--font-c);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--red);cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(40,116,184,.25)'" onmouseout="this.style.background='var(--red-glow)'">📅 Book Estimate Online</button>
       </div>
     </div>
 
@@ -595,47 +615,6 @@
 </div>
 
 <!-- BOOKING SECTION — shown after price reveal and standalone -->
-<div id="bookingSection" style="display:none;padding:0 40px 60px;max-width:1200px;margin:0 auto">
-  <div style="background:var(--bg3);border:1px solid rgba(40,116,184,.35);border-radius:12px;padding:36px;background:linear-gradient(135deg,rgba(40,116,184,.08) 0%,var(--bg3) 60%)">
-    <div style="text-align:center;margin-bottom:30px">
-      <div style="font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px">📅 Free On-Site Estimate</div>
-      <div style="font-family:var(--font-d);font-size:clamp(34px,4vw,52px);line-height:.95;margin-bottom:12px">Book Your Free<br/>On-Site Estimate</div>
-      <p style="font-size:15px;color:var(--gray-light);max-width:580px;margin:0 auto;line-height:1.7">Pick a time that works for you. We'll come to your property, measure your space, bring color samples, and give you a written quote — zero pressure, zero obligation.</p>
-    </div>
-    <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px">
-      <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-light)"><span style="color:#4caf50">✓</span>Free — No cost ever</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-light)"><span style="color:#4caf50">✓</span>We come to you</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-light)"><span style="color:#4caf50">✓</span>Bring color samples</div>
-      <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-light)"><span style="color:#4caf50">✓</span>Written quote — no pressure</div>
-    </div>
-    <!-- TODO: embed Shipp-Mates' own booking calendar here -->
-    <div style="background:var(--bg2);border-radius:10px;overflow:hidden;border:1px solid var(--border);padding:48px 24px;text-align:center">
-      <p style="font-family:var(--font-c);font-size:16px;font-weight:700;letter-spacing:.04em;color:var(--gray-light)">Online booking is coming soon.</p>
-      <p style="font-size:13px;color:var(--gray);margin-top:8px">In the meantime, call us or use the contact form to schedule your free on-site estimate.</p>
-    </div>
-    <div style="text-align:center;margin-top:20px">
-      <p style="font-size:13px;color:var(--gray);font-family:var(--font-c);letter-spacing:.04em">Prefer to call? <a href="tel:4172556890" style="color:var(--red);font-weight:700">417.255.6890</a> · Mon–Fri 9am–5pm</p>
-    </div>
-  </div>
-</div>
-
-<!-- BOOKING MODAL (triggered from path card and result) -->
-<div id="bookingModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:20px">
-  <div style="background:var(--bg2);border:1px solid rgba(40,116,184,.4);border-radius:12px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;padding:28px;position:relative">
-    <button onclick="closeBooking()" style="position:absolute;top:16px;right:18px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7">×</button>
-    <div style="text-align:center;margin-bottom:22px">
-      <div style="font-family:var(--font-c);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:6px">Free On-Site Estimate</div>
-      <div style="font-family:var(--font-d);font-size:38px;line-height:.95;margin-bottom:8px">Book Your Estimate</div>
-      <p style="font-size:14px;color:var(--gray-light);max-width:480px;margin:0 auto">Pick a time — we'll come to you with color samples and give you a written quote.</p>
-    </div>
-    <div style="background:var(--bg3);border-radius:8px;overflow:hidden;border:1px solid var(--border);padding:40px 24px;text-align:center">
-      <p style="font-family:var(--font-c);font-size:15px;font-weight:700;color:var(--gray-light)">Online booking is coming soon.</p>
-    </div>
-    <div style="text-align:center;margin-top:16px;font-size:12px;color:var(--gray);font-family:var(--font-c)">
-      Or call us directly: <a href="tel:4172556890" style="color:var(--red);font-weight:700">417.255.6890</a>
-    </div>
-  </div>
-</div>
 
 <!-- WHY SECTION -->
 <div class="why-section">
@@ -674,7 +653,7 @@
 
 <div class="sticky-mob">
   <a href="tel:4172556890" class="s-call">&#128222; 417.255.6890</a>
-  <a href="#" onclick="openBooking();return false;" class="s-quote">&#128197; Book Estimate</a>
+  <a href="/contact.html" class="s-quote">&#9993; Free Quote</a>
 </div>
 
 <script>
@@ -908,7 +887,7 @@
     const sysLabel = (SYSTEMS[state.system] || SYSTEMS.flake).label;
 
     document.getElementById('resultDesc').innerHTML =
-      `Based on <strong>${est.sqft.toLocaleString()} sq ft</strong>, your ${typeLabels[state.type] || 'floor coating'} using a <strong>${sysLabel}</strong>, your project currently falls in the range above. The next step is a free on-site visit where we measure your space, assess the concrete, and give you a written quote.`;
+      `Based on <strong>${est.sqft.toLocaleString()} sq ft</strong>, your ${typeLabels[state.type] || 'floor coating'} using our <strong>${sysLabel}</strong>, your project currently falls in the range above. The next step is a free on-site visit where we measure your space, assess the concrete, and give you a written quote.`;
 
     // Show result, hide unlock form
     document.getElementById('step2Panel').style.display = 'none';
@@ -924,27 +903,6 @@
     document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  // ── BOOKING ──────────────────────────────────────────────────────────────
-  function openBooking() {
-    const modal = document.getElementById('bookingModal');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeBooking() {
-    document.getElementById('bookingModal').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  function showBookingSection() {
-    const sec = document.getElementById('bookingSection');
-    sec.style.display = 'block';
-    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  document.getElementById('bookingModal').addEventListener('click', function(e) {
-    if (e.target === this) closeBooking();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeBooking();
-  });
   function resetCalc() {
     state = { type: 'garage', sqft: null, system: 'flake', condition: 'good', layout: 'standard' };
     savedLead = null;

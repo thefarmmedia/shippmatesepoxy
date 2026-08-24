@@ -80,7 +80,10 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:32px 40px
 .area-tag:hover{border-color:var(--red);color:var(--white)}
 .rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
 @media(max-width:1100px){.ph-inner{grid-template-columns:1fr}.sform{max-width:520px}}
-@media(max-width:768px){nav{padding:0 18px}.nav-links{display:none}.hamburger{display:flex}.sec{padding:48px 18px}.topbar{display:none}.sticky-mob{display:flex}body{padding-bottom:70px}.footer-bot{flex-direction:column;text-align:center}.frow{grid-template-columns:1fr}}
+@media(max-width:768px){
+li{min-width:0}
+.prose ul li,.cov-list li,ul li{overflow-wrap:anywhere}
+nav{padding:0 18px}.nav-links{display:none}.hamburger{display:flex}.sec{padding:48px 18px}.topbar{display:none}.sticky-mob{display:flex}body{padding-bottom:70px}.footer-bot{flex-direction:column;text-align:center}.frow{grid-template-columns:1fr}}
 
 .nav-links li.areas-drop{position:relative}
 .nav-links li.areas-drop>a{cursor:pointer}
@@ -103,6 +106,26 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:32px 40px
 .site-credit{max-width:1300px;margin:18px auto 0;padding-top:14px;border-top:1px solid var(--border);text-align:center;font-family:var(--font-c);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--gray)}
 .site-credit a{color:var(--gray-light);transition:color .2s}
 .site-credit a:hover{color:var(--red)}
+
+/* MOBILE OVERFLOW GUARD */
+body{overflow-wrap:break-word}
+.sticky-mob{max-width:100%;box-sizing:border-box}
+.sticky-mob a{min-width:0;overflow:hidden;text-overflow:ellipsis}
+
+@media(max-width:768px){
+[style*="grid-template-columns"]{grid-template-columns:1fr!important}
+[style*="grid-template-columns"]>*{min-width:0}
+.colors-grid{grid-template-columns:repeat(2,1fr)!important}
+.color-name{font-size:18px;overflow-wrap:anywhere}
+table{display:block;width:100%;max-width:100%;overflow-x:auto}
+}
+@media(max-width:560px){
+.ci-item,.ci-item>*,.ci-item>*>*{min-width:0}
+.ci-item{flex-wrap:wrap}
+
+.af-top,.areas-g,.ba-grid,.blog-grid,.calc-grid,.compare-grid,.contact-g,.contact-grid,.coverage-grid,.frow,.gallery-grid,.hero-inner,.installed-grid,.layer-grid,.path-choice,.ph-inner,.photo-showcase-in,.pillars,.price-grid,.proc,.process-photos,.result-includes,.rev-grid,.services-grid,.stats-in,.story-grid,.system-grid,.team-grid,.two-col,.two-col-prose,.values-grid,.why-grid,.footer-top{grid-template-columns:1fr!important}
+.af-top>*,.areas-g>*,.ba-grid>*,.blog-grid>*,.calc-grid>*,.compare-grid>*,.contact-g>*,.contact-grid>*,.coverage-grid>*,.frow>*,.gallery-grid>*,.hero-inner>*,.installed-grid>*,.layer-grid>*,.path-choice>*,.ph-inner>*,.photo-showcase-in>*,.pillars>*,.price-grid>*,.proc>*,.process-photos>*,.result-includes>*,.rev-grid>*,.services-grid>*,.stats-in>*,.story-grid>*,.system-grid>*,.team-grid>*,.two-col>*,.two-col-prose>*,.values-grid>*,.why-grid>*,.footer-top>*{min-width:0}
+}
 </style>
 </head>
 <body>
