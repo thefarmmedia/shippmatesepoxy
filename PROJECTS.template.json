@@ -1,0 +1,21 @@
+{
+  "_comment": "Real completed projects only. Omit any field you cannot verify - do not estimate. Only populated fields should ever be rendered on the site.",
+  "projects": [
+    {
+      "city": "",
+      "county": "",
+      "project_type": "",
+      "approx_size_sqft": null,
+      "system_installed": "",
+      "flake_or_finish": "",
+      "slab_condition_before": "",
+      "prep_completed": "",
+      "install_duration": "",
+      "before_image": "",
+      "after_image": "",
+      "customer_quote": "",
+      "customer_quote_verified": false,
+      "completion_date": ""
+    }
+  ]
+}

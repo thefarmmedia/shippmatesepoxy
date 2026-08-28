@@ -38,4 +38,14 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# Thin service-area stubs are excluded from the sitemap and carry noindex,follow
+# in the page head. They are intentionally left crawlable so links are followed.
+
+# Do not block assets - Google needs CSS, JS and images to render the page.
+Allow: /images/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.png$
+
 Sitemap: https://shippmatesepoxy.com/sitemap.xml
