@@ -91,3 +91,25 @@ neither is wrong. They measure different things.
 
 Use Search Console for **trend direction**, and a location-accurate rank tracker or an incognito
 window with location set to the target city for **spot checks**.
+
+---
+
+## Image delivery (implemented)
+
+All 124 photographs and the logo are served as responsive WebP with the original
+JPEG/PNG kept as a fallback inside a `<picture>` element. Variants live in `/webp/`
+at 480, 900, 1600 and native width.
+
+Measured on the homepage at a 390px viewport, before and after:
+
+| | Image requests | Payload |
+|---|---|---|
+| Original JPEGs | 28 | 6.59 MB |
+| Responsive WebP | 28 | 1.25 MB |
+
+That is an **81% reduction** in image bytes on the most-visited page, which is the
+single largest Largest Contentful Paint factor on this site. Older browsers with no
+WebP support fall back to the original JPEG automatically.
+
+**Note for future edits:** if you add a new photograph, regenerate the WebP variants
+or the new image will silently serve only the JPEG fallback.
