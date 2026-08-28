@@ -43,7 +43,7 @@ map-pack visibility than anything on the website. This is the work only you can 
 ## 3. Citations (NAP consistency)
 
 Your Name, Address, Phone must be **byte-identical** everywhere. Decide now whether you are
-"417-255-6890" or "417.255.6890" and use that one form forever.
+"417-255-6890" or "417-255-6890" and use that one form forever.
 
 Create or correct listings on:
 
