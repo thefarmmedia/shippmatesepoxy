@@ -48,17 +48,21 @@ The About page H1 changed from *"Lake of the Ozarks' Most Trusted Floor Coating 
 No `AggregateRating` or `Review` schema exists anywhere on the site, and none should be added
 until real first-party reviews are collected. The verified Google profile link is retained.
 
+Unverified certification language, numeric "6× stronger" comparisons, fixed 15–25 year
+lifespan promises, and absolute "chemical-proof" / "scratch-proof" wording were also replaced
+with accurate non-absolute descriptions such as professional-grade, high-performance,
+chemical-resistant, scratch-resistant, and long-term performance.
+
 - [ ] **TODO (OWNER):** once you have real Google reviews, they may be displayed and
       `AggregateRating` becomes eligible. Do not add it before then.
 
 ---
 
-## 3. Counties — VERIFIED, none were wrong in this repository
+## 3. Counties — VERIFIED AND CORRECTED
 
-The brief reported incorrect counties on the live site (e.g. Camdenton shown as Christian
-County). **No county reference of any kind existed in this repository** — the live site may be
-running an older build. Accurate counties have now been added to the 8 priority city pages,
-using this verified list:
+The homepage service-area grid contained incorrect county labels (including Camdenton as
+Christian County and Eldon as Greene County). Those labels have been corrected. Accurate
+county context is also included on the eight priority city pages, using this verified list:
 
 | City | County |
 |---|---|
@@ -83,16 +87,18 @@ using this verified list:
 | Rocky Mount | Morgan |
 | California | Moniteau |
 
-- [ ] **TODO (OWNER):** if the live site still shows wrong counties, redeploy from this repository.
+- [ ] **TODO (OWNER):** if the live site still shows wrong counties after this commit deploys,
+      confirm Netlify is connected to this repository's `main` branch and trigger a production deploy.
 
 ---
 
-## 4. Article dates — nothing was backdated
+## 4. Article dates — unverified dates removed
 
-The brief mentioned articles dated December 2024 to May 2025. **No visible publication dates and
-no `datePublished` / `dateModified` fields exist anywhere in this repository.** Nothing was
-backdated, and no `Article` / `BlogPosting` schema was added, because adding it would require
-publication dates that cannot be verified.
+The site displayed article dates from December 2024 through May 2025, but the repository did not
+contain evidence establishing those as the original publication dates. The visible month/year
+labels were removed while the useful reading-time labels were retained. No `datePublished` or
+`dateModified` values were added, and no `Article` / `BlogPosting` schema was added, because doing
+so would require publication dates that can be verified.
 
 - [ ] **TODO (OWNER):** supply the real first-publication date for each of the six guides. Once
       supplied, visible dates and matching `BlogPosting` schema can be added together so they agree.

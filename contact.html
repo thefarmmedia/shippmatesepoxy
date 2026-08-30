@@ -370,9 +370,13 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
       all_fields: fields
     };
 
-    sendLead(payload).then(function(){
+    sendLead(payload).then(function(sent){
       if (btn){ btn.disabled = false; btn.textContent = label; }
-      alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      if (sent){
+        alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      } else {
+        alert("We couldn't send your request. Please call 417-255-6890 or email shippmatesepoxy@gmail.com.");
+      }
     });
   }
 
