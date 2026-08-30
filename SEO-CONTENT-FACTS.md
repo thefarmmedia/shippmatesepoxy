@@ -7,30 +7,21 @@ years in business, staff names, or a street address.
 
 ---
 
-## 1. Warranty — RESOLVED, but confirm wording
+## 1. Warranty — OWNER VERIFIED
 
 `warranty.html` is the authoritative document in this repository. It states:
 
 | Surface | Peeling / delamination | Staining (if cleaned within 20 min) |
 |---|---|---|
-| Residential interior / garage | As long as the **original purchaser owns the home** | 10 years |
-| Commercial | 10 years from substantial completion | 10 years |
-| Exterior | 3 years from substantial completion | 3 years |
+| Residential interior / garage | 15 years | 15 years |
+| Commercial | 15 years from substantial completion | 15 years |
+| Exterior | 15 years from substantial completion | 15 years |
 
 The warranty is **non-transferable** and terminates on sale of the property.
 
-**What was wrong:** the rest of the site claimed a *"Lifetime Warranty"* in 186 places and a
-*"15-Year / 15 YR Written Warranty"* in 3 more. Neither term appears in the warranty document,
-and a tenure-limited, non-transferable warranty is not a lifetime warranty. A 15-year term
-exists nowhere.
-
-**What was done:** every marketing instance now reads **"Written Warranty"**, which is accurate
-for all three surface types and does not overstate coverage. `warranty.html` keeps the full
-detailed terms.
-
-- [ ] **TODO (OWNER):** confirm the table above matches the signed warranty you actually issue.
-      If you want surface-specific wording on marketing pages (e.g. "10-Year Commercial Warranty"),
-      say so and it can be applied per page.
+Owner Blake Shipp confirmed the company issues a **15-year warranty**. Marketing pages and the
+published warranty now use that term consistently. The warranty remains non-transferable and
+subject to the exclusions and customer responsibilities published on `warranty.html`.
 
 ---
 
@@ -114,25 +105,26 @@ All verified from the repository or the brief:
 - Hours: Mon–Fri 9:00am–5:00pm (as published in the site top bar)
 - Locality: Osage Beach, MO (no street address is published or invented)
 - Facebook: https://www.facebook.com/ShippmatesEpoxy
-- Google profile: https://maps.app.goo.gl/rQW1NgK3evyzxRiU7
+- Google profile: https://maps.app.goo.gl/2q6oM6fcQEwCEBi98
 
-- [ ] **TODO (OWNER):** confirm whether you have a customer-facing address. If you are a pure
-      service-area business, the current locality-only markup is correct and no street address
-      should ever be added.
+- Service-area business: owner confirmed no public street address should be listed. Locality-only
+  structured data is intentional.
 - [ ] **TODO (OWNER):** confirm `priceRange` "$$" is acceptable, or remove it.
 - [ ] **TODO (OWNER):** confirm insurance status. "Insured" is NOT claimed anywhere on the site
       because it could not be verified. Supply proof and it can be added as a trust signal.
 
 ---
 
-## 6. About page — needs real owner content
+## 6. About page — OWNER VERIFIED
 
-`about.html` currently has no verified owner names, founding date, training, or certifications.
-None were invented.
+Verified owner facts now published:
 
-- [ ] **TODO (OWNER):** owner name(s)
-- [ ] **TODO (OWNER):** year the business started
-- [ ] **TODO (OWNER):** relevant training / manufacturer certification
+- Owner: Blake Shipp
+- Experience: four years in concrete coatings
+- Related company: Blake also operates West Plains Epoxy
+
+- [ ] **TODO (OWNER):** year Shipp-Mates Epoxy was started
+- [ ] **TODO (OWNER):** relevant manufacturer certification
 - [ ] **TODO (OWNER):** why you serve the Lake area
 - [ ] **TODO (OWNER):** real team photograph
 
