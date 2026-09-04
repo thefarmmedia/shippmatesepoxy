@@ -115,7 +115,7 @@
     .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .tc{background:var(--bg3);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .25s,transform .25s}
     .tc:hover{border-color:rgba(40,116,184,.4);transform:translateY(-4px)}
-    .tc img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
+    .tc img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;transition:transform .4s}
     .tc:hover img{transform:scale(1.04)}
     .tc-body{padding:16px 18px}
     .tc-name{font-family:var(--font-c);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
@@ -237,6 +237,7 @@ table{display:block;width:100%;max-width:100%;overflow-x:auto}
 }
 button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
 .hamburger:focus-visible,a:focus-visible,button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+img[width][height]{height:auto}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shippmatesepoxy.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://shippmatesepoxy.com/about.html"}]}</script>
 </head>

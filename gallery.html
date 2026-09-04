@@ -79,8 +79,8 @@
     .photo-grid.wide{grid-template-columns:repeat(3,1fr)}
     .pg-item{border-radius:8px;overflow:hidden;border:1px solid var(--border);position:relative;cursor:pointer;transition:border-color .25s,transform .25s;background:var(--bg3)}
     .pg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;aspect-ratio:1/1}
-    .pg-item.tall img{aspect-ratio:3/4}
-    .pg-item.wide img{aspect-ratio:4/3}
+    .pg-item.tall img{aspect-ratio:3/4;height:auto}
+    .pg-item.wide img{aspect-ratio:4/3;height:auto}
     .pg-item:hover{border-color:rgba(40,116,184,.5);transform:scale(1.02);box-shadow:0 12px 36px rgba(0,0,0,.5)}
     .pg-item:hover img{transform:scale(1.07)}
     .pg-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.9),transparent);padding:14px 16px;opacity:0;transition:opacity .3s}
@@ -91,7 +91,7 @@
     .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .tc{border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg3);transition:border-color .25s,transform .25s}
     .tc:hover{border-color:rgba(40,116,184,.4);transform:translateY(-4px)}
-    .tc img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
+    .tc img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block}
     .tc-body{padding:16px}
     .tc-name{font-family:var(--font-c);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
     .tc-role{font-family:var(--font-c);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
@@ -218,6 +218,7 @@ table{display:block;width:100%;max-width:100%;overflow-x:auto}
 }
 button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
 .hamburger:focus-visible,a:focus-visible,button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+img[width][height]{height:auto}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shippmatesepoxy.com/"},{"@type":"ListItem","position":2,"name":"Gallery","item":"https://shippmatesepoxy.com/gallery.html"}]}</script>
 </head>

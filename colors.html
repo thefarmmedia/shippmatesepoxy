@@ -68,7 +68,7 @@
     .color-card{border-radius:10px;overflow:hidden;border:2px solid var(--border);background:var(--bg3);transition:border-color .25s,transform .25s,box-shadow .25s;cursor:pointer;position:relative}
     .color-card:hover{border-color:rgba(40,116,184,.5);transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
     .color-card.selected{border-color:var(--red);box-shadow:0 0 0 3px rgba(40,116,184,.3),0 14px 40px rgba(0,0,0,.5)}
-    .color-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .4s}
+    .color-card img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .4s}
     .color-card:hover img{transform:scale(1.06)}
     .color-info{padding:14px 16px}
     .color-name{font-family:var(--font-d);font-size:22px;line-height:1;margin-bottom:3px}
@@ -104,7 +104,7 @@
     .picker-chip{border-radius:8px;overflow:hidden;border:2px solid var(--border);cursor:pointer;transition:all .2s;position:relative}
     .picker-chip:hover{border-color:rgba(40,116,184,.5);transform:scale(1.04)}
     .picker-chip.picked{border-color:var(--red);box-shadow:0 0 0 3px rgba(40,116,184,.3)}
-    .picker-chip img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+    .picker-chip img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block}
     .picker-chip-name{padding:6px 8px;font-family:var(--font-c);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--gray-light);background:var(--bg3)}
     .picker-chip.picked .picker-chip-name{color:var(--white);background:rgba(40,116,184,.2)}
     .picked-indicator{position:absolute;top:6px;right:6px;background:var(--red);border-radius:50%;width:20px;height:20px;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:900}
@@ -204,6 +204,7 @@ table{display:block;width:100%;max-width:100%;overflow-x:auto}
 }
 button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
 .hamburger:focus-visible,a:focus-visible,button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+img[width][height]{height:auto}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shippmatesepoxy.com/"},{"@type":"ListItem","position":2,"name":"Colors","item":"https://shippmatesepoxy.com/colors.html"}]}</script>
 </head>
