@@ -310,7 +310,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
     <li><a href="/residential.html">Residential</a></li>
     <li><a href="/commercial.html">Commercial</a></li>
     <li><a href="/gallery.html">Gallery</a></li>
-    <li><a href="/colors.html">Colors</a></li>
+    <li><a href="/colors.html">Colors</a></li><li><a href="/floor-visualizer.html">Visualizer</a></li>
     <li><a href="/blog.html">Blog</a></li>
     <li><a href="/reviews.html">Reviews</a></li>
     <li class="areas-drop"><a href="/contact.html">Areas <span class="caret">&#9662;</span></a><div class="areas-dropdown"><a href="/osage-beach-mo.html">Osage Beach</a><a href="/camdenton-mo.html">Camdenton</a><a href="/lake-ozark-mo.html">Lake Ozark</a><a href="/versailles-mo.html">Versailles</a><a href="/laurie-mo.html">Laurie</a><a href="/eldon-mo.html">Eldon</a><a href="/linn-creek-mo.html">Linn Creek</a><a href="/macks-creek-mo.html">Macks Creek</a><a href="/stover-mo.html">Stover</a><a href="/montreal-mo.html">Montreal</a><a href="/iberia-mo.html">Iberia</a><a href="/sunrise-beach-mo.html">Sunrise Beach</a><a href="/village-of-four-seasons-mo.html">Village of Four Seasons</a><a href="/climax-springs-mo.html">Climax Springs</a><a href="/gravois-mills-mo.html">Gravois Mills</a><a href="/tuscumbia-mo.html">Tuscumbia</a><a href="/lebanon-mo.html">Lebanon</a><a href="/brumley-mo.html">Brumley</a><a href="/rocky-mount-mo.html">Rocky Mount</a><a href="/california-mo.html">California</a></div></li><li><a href="/contact.html" class="nav-cta active">Free Quote</a></li>
@@ -415,6 +415,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
         <div class="calc-panel">
           <h2>Step 1: Your Project Details</h2>
           <p class="sub">Tell us about your project and we'll calculate your price range in real time.</p>
+          <div id="colorNote" style="display:none;background:var(--red-glow);border:1px solid var(--red);border-radius:8px;padding:10px 14px;margin-bottom:18px;font-size:14px;color:var(--white)">🎨 Pricing your selected color: <strong id="colorNoteName"></strong> — <a href="/colors.html" style="color:var(--red);font-weight:700">change color</a></div>
 
           <!-- PROJECT TYPE -->
           <div class="fg" style="margin-bottom:20px">
@@ -667,9 +668,27 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
     sqft: null,
     system: 'flake',
     condition: 'good',
-    layout: 'standard'
+    layout: 'standard',
+    color: null
   };
   let savedLead = null;
+
+  // ── COLOR HANDOFF FROM THE FLOOR VISUALIZER (?color=Slug-Name) ────────────
+  (function readColorFromUrl() {
+    try {
+      const raw = new URLSearchParams(window.location.search).get('color');
+      if (!raw) return;
+      const name = decodeURIComponent(raw).replace(/-/g, ' ');
+      state.color = name;
+      document.getElementById('colorNoteName').textContent = name;
+      document.getElementById('colorNote').style.display = 'block';
+      document.querySelectorAll('[data-group="system"]').forEach(c => c.classList.remove('active'));
+      const flakeCard = document.querySelector('[data-group="system"][data-val="flake"]');
+      if (flakeCard) flakeCard.classList.add('active');
+      state.system = 'flake';
+      window.addEventListener('DOMContentLoaded', openCalculator);
+    } catch (e) {}
+  })();
 
   // ── NAV ──────────────────────────────────────────────────────────────────
   document.getElementById('hbtn').addEventListener('click', () => {
@@ -851,7 +870,8 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
       high_estimate: est.high,
       low_rate_per_sqft: est.lowRate,
       high_rate_per_sqft: est.highRate,
-      estimate_range: `$${est.low.toLocaleString()} - $${est.high.toLocaleString()}`
+      estimate_range: `$${est.low.toLocaleString()} - $${est.high.toLocaleString()}`,
+      selected_floor_color: state.color || undefined
     };
 
     // Fire to lead webhook. Retries once, then falls back to sendBeacon so a
