@@ -205,6 +205,7 @@ table{display:block;width:100%;max-width:100%;overflow-x:auto}
 button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
 .hamburger:focus-visible,a:focus-visible,button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 :where(img[width][height]){height:auto}
+@media(min-width:901px) and (max-width:1200px){.nav-links{gap:12px;font-size:12px}nav{padding-left:18px;padding-right:18px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shippmatesepoxy.com/"},{"@type":"ListItem","position":2,"name":"Colors","item":"https://shippmatesepoxy.com/colors.html"}]}</script>
 </head>
@@ -222,7 +223,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
 
 <!-- NAV -->
 <nav>
-  <a href="/index.html" class="nav-logo"><picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-original-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-original-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="lazy" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture></a>
+  <a href="/index.html" class="nav-logo"><picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="eager" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture></a>
   <ul class="nav-links">
     <li><a href="/index.html">Home</a></li>
     <li><a href="/about.html">About</a></li>
@@ -237,7 +238,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
   </ul>
   <button class="hamburger" id="hbtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mob-menu" id="mmenu">
+<div class="mob-menu" id="mmenu"><a href="/floor-visualizer.html">Floor Visualizer</a>
   <a href="/index.html">Home</a>
   <a href="/about.html">About</a>
   <a href="/residential.html">Residential</a>
@@ -865,6 +866,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
   <a href="/instant-quote.html" class="s-quote">&#9889; Instant Quote</a>
 </div>
 
+<section style="padding:32px;text-align:center;background:#111"><h2>See These Colors on Your Floor</h2><p>Upload a photo or try the sample garage, then compare our 25 flake blends.</p><a href="/floor-visualizer.html" style="display:inline-block;padding:14px 24px;background:#2874b8;color:white;margin-top:16px;border-radius:6px">Open the Floor Visualizer →</a></section>
 <script>
   // ── NAV ──────────────────────────────────────────────────────────────────
   document.getElementById('hbtn').addEventListener('click', function() {
