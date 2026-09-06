@@ -132,3 +132,15 @@ test('failed visualizer quote delivery retains the form and restores retry', asy
   assert.equal(els.get('qSubmitBtn').disabled,false);
   assert.ok(!els.has('quoteSuccess'));
 });
+
+
+test('1280px catalog textures retain the reference 520px flake scale', () => {
+  const scaleCode = html.slice(html.indexOf('var TILE = 768;'), html.indexOf("var tileCanvas ="));
+  function footprint(width) {
+    const c = vm.createContext({texImg:{naturalWidth:width}});
+    vm.runInContext(scaleCode,c);
+    return (width / 520 * 30) * c.chipScale;
+  }
+  assert.ok(Math.abs(footprint(1280)-footprint(520)) < 1e-9);
+  assert.ok(Math.abs(footprint(2560)-footprint(520)) < 1e-9);
+});

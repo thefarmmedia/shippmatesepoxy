@@ -1374,7 +1374,10 @@ function fvComposite(room, color, callback, shouldCancel){
     // them, cutting rendered chip size by about 75%.
     var TILE = 768;
     var CHIPS_ACROSS_TILE = 72;
-    var SRC_CHIP_PX = 30;               // approx chip size in the product photos
+    // The reference renderer is calibrated to 520px texture images. Our
+    // catalog swatches are 1280px: normalize their pixel density so enlarging
+    // a source image cannot enlarge the physical flakes on the floor.
+    var SRC_CHIP_PX = 30 * (texImg.naturalWidth / 520);
     var chipInTile = TILE / CHIPS_ACROSS_TILE;
     var chipScale = chipInTile / SRC_CHIP_PX; // ~0.46 => a real reduction, not a magnification
 
