@@ -238,6 +238,7 @@ table{display:block;width:100%;max-width:100%;overflow-x:auto}
 button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
 .hamburger:focus-visible,a:focus-visible,button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 :where(img[width][height]){height:auto}
+@media(min-width:901px) and (max-width:1200px){.nav-links{gap:12px;font-size:12px}nav{padding-left:18px;padding-right:18px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shippmatesepoxy.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://shippmatesepoxy.com/about.html"}]}</script>
 </head>
@@ -253,21 +254,21 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
 </div>
 
 <nav>
-  <a href="/index.html" class="nav-logo"><picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-original-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-original-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="lazy" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture></a>
+  <a href="/index.html" class="nav-logo"><picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="eager" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture></a>
   <ul class="nav-links">
     <li><a href="/index.html">Home</a></li>
     <li><a href="/about.html" class="active">About</a></li>
     <li><a href="/residential.html">Residential</a></li>
     <li><a href="/commercial.html">Commercial</a></li>
     <li><a href="/gallery.html">Gallery</a></li>
-    <li><a href="/colors.html">Colors</a></li>
+    <li><a href="/colors.html">Colors</a></li><li><a href="/floor-visualizer.html">Visualizer</a></li>
     <li><a href="/blog.html">Blog</a></li>
     <li><a href="/reviews.html">Reviews</a></li>
     <li class="areas-drop"><a href="/contact.html">Areas <span class="caret">&#9662;</span></a><div class="areas-dropdown"><a href="/osage-beach-mo.html">Osage Beach</a><a href="/camdenton-mo.html">Camdenton</a><a href="/lake-ozark-mo.html">Lake Ozark</a><a href="/versailles-mo.html">Versailles</a><a href="/laurie-mo.html">Laurie</a><a href="/eldon-mo.html">Eldon</a><a href="/linn-creek-mo.html">Linn Creek</a><a href="/macks-creek-mo.html">Macks Creek</a><a href="/stover-mo.html">Stover</a><a href="/montreal-mo.html">Montreal</a><a href="/iberia-mo.html">Iberia</a><a href="/sunrise-beach-mo.html">Sunrise Beach</a><a href="/village-of-four-seasons-mo.html">Village of Four Seasons</a><a href="/climax-springs-mo.html">Climax Springs</a><a href="/gravois-mills-mo.html">Gravois Mills</a><a href="/tuscumbia-mo.html">Tuscumbia</a><a href="/lebanon-mo.html">Lebanon</a><a href="/brumley-mo.html">Brumley</a><a href="/rocky-mount-mo.html">Rocky Mount</a><a href="/california-mo.html">California</a></div></li><li><a href="/contact.html" class="nav-cta">Free Quote</a></li>
   </ul>
   <button class="hamburger" id="hbtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mob-menu" id="mmenu">
+<div class="mob-menu" id="mmenu"><a href="/floor-visualizer.html">Floor Visualizer</a>
   <a href="/index.html">Home</a>
   <a href="/about.html">About</a>
   <a href="/residential.html">Residential</a>
@@ -323,7 +324,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
           <p>We've watched too many homeowners get burned by cheap epoxy jobs that peel within a year. Floors installed by companies who skip the prep, use inferior materials, and disappear when problems arise. We built Shipp-Mates Epoxy of the Ozarks specifically to be the alternative to that — a company you can actually trust.</p>
           <h3>Why We're Different</h3>
           <p>Every install starts with full diamond grinding — the step most cheap installers skip. We use professional-grade polyaspartic/polyurea hybrid coatings, not the water-based epoxy from a box. And every single project is backed by our 15-year written warranty, because we stand behind our work long after the truck leaves your driveway.</p>
-          <p>We serve a 75-mile radius around Osage Beach — from Laurie to Lebanon, Versailles to Tuscumbia — and we bring the same level of care to every job regardless of size.</p>
+          <p>We serve a 75-mile radius around Osage Beach — from <a href="/laurie-mo.html" style="color:var(--red);text-decoration:underline;text-underline-offset:3px">Laurie</a> to Lebanon, Versailles to Tuscumbia — and we bring the same level of care to every job regardless of size.</p>
         </div>
       </div>
       <div class="rev">
@@ -491,11 +492,12 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
   <a href="/contact.html" class="btn-white btn">Get My Free Quote →</a>
 </div>
 
+<section style="background:#111;padding:36px 24px;border-top:1px solid #222"><div style="max-width:1180px;margin:0 auto"><h2 style="font-family:var(--font-d);font-size:32px;font-weight:400;margin-bottom:18px">Explore Your Next Step</h2><nav aria-label="Related floor services" style="position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;height:auto;background:transparent;border:0;padding:0"><a href="/residential.html" style="display:block;background:#181818;border:1px solid #333;border-radius:4px;padding:15px 18px;color:#fff;font-family:var(--font-c);font-weight:700;text-decoration:none">Residential coating services →</a><a href="/commercial.html" style="display:block;background:#181818;border:1px solid #333;border-radius:4px;padding:15px 18px;color:#fff;font-family:var(--font-c);font-weight:700;text-decoration:none">Commercial coating services →</a><a href="/gallery.html" style="display:block;background:#181818;border:1px solid #333;border-radius:4px;padding:15px 18px;color:#fff;font-family:var(--font-c);font-weight:700;text-decoration:none">View our work →</a><a href="/instant-quote.html" style="display:block;background:#181818;border:1px solid #333;border-radius:4px;padding:15px 18px;color:#fff;font-family:var(--font-c);font-weight:700;text-decoration:none">Plan your project →</a></nav></div></section>
 <footer>
   <div class="footer-in">
     <div class="footer-top">
       <div class="fl">
-        <picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-original-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-original-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="lazy" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture>
+        <picture><source type="image/webp" srcset="webp/shippmates-logo-480.webp 480w, webp/shippmates-logo-900.webp 900w, webp/shippmates-logo-1000.webp 1000w, webp/shippmates-logo-original-1600.webp 1600w, webp/shippmates-logo-original-2048.webp 2048w" sizes="180px"/><img decoding="async" loading="lazy" src="images/shippmates-logo.png" alt="Shipp-Mates Epoxy of the Ozarks Osage Beach MO" width="1000" height="778"/></picture>
         <p class="fl-tag">Lake of the Ozarks' premier polyaspartic &amp; epoxy floor coating contractor. 75-mile radius from Osage Beach, MO.</p>
         <div class="fl-soc">
           <a href="https://www.facebook.com/ShippmatesEpoxy" class="fs-a" target="_blank" rel="noopener" aria-label="Shipp-Mates Epoxy on Facebook">f</a>

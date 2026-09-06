@@ -135,3 +135,6 @@ Verified owner facts now published:
 `PROJECTS.template.json` in this repository is a reusable structure for genuine completed
 projects. Only fields containing real information should be filled in and displayed. Leave a
 field out entirely rather than estimating it.
+
+## Pricing content — owner instruction September 6, 2026
+Do not publish cost guides, sample budgets or static installation price tables. Send pricing visitors to /instant-quote.html. The retired cost-guide URLs redirect to the calculator. This supersedes earlier audit recommendations to expand the cost guide.
