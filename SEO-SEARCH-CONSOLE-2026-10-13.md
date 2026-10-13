@@ -24,20 +24,20 @@ The visualizer is absent from Pages.csv. That establishes no recorded impression
 
 - Live visualizer returned HTTP 200 without an X-Robots-Tag exclusion. robots.txt permits crawling, its canonical points to itself, and it is included in the sitemap. Its extensionless URL redirects to the canonical HTML URL. HTTP redirects to HTTPS.
 - The sample photo and palette previously appeared only after JavaScript ran. The palette is now static HTML and a default split comparison renders before JavaScript. This improves discoverability and first paint; it is not proof that JavaScript caused the lack of traffic.
-- The old cost article already redirects to /instant-quote.html. Its historical 309 impressions are not evidence that the deleted article still needs editing. The destination previously led with a vague free-quote heading and gated the estimate. It now explains local floor coating costs and shows the existing calculator's six published price ranges in HTML.
+- The old cost article already redirects to /instant-quote.html. Its historical 309 impressions are not evidence that the deleted article still needs editing. The destination previously led with a vague free-quote heading and gated the estimate. Its heading now identifies the local instant calculator. All installation pricing remains inside the calculator flow, as directed by the owner; no public price table or example price is published.
 - Twelve town stubs intentionally carry noindex,follow and are excluded from the sitemap: Brumley, California, Climax Springs, Gravois Mills, Iberia, Lebanon, Macks Creek, Montreal, Rocky Mount, Stover, Tuscumbia and Village of Four Seasons. These cannot acquire new indexed visibility while excluded. Removing noindex from repetitive service-area stubs without useful local evidence is not a complete local SEO fix.
 - All 48 HTML pages have one H1, one canonical and distinct titles; all referenced local file destinations resolve in the checkout. Home links now point directly to / instead of /index.html redirects.
 
 ## Implemented
 
-- Imported the exact current Ozarks Concrete Coatings sample garage photo and its calibrated floor mask; it is labeled a sample, not a Shipp-Mates completed job.
+- Imported the exact photo and calibrated floor mask from the live https://ozarksconcrete.com/visualizer-embed.html (bare-concrete-garage-floor-springfield-mo.webp). The GitHub floor-visualizer.html used a different image; corrected after checking the live embed. It is labeled a sample, not a Shipp-Mates completed job.
 - Applied the newer chip-size distribution and smaller perspective projection while retaining Shipp-Mates' 25-color catalog and its 1280px source-density normalization.
 - Disabled object restoration for the empty sample photo, so slab stains cannot reappear through the coating. Uploaded photos retain live rendering and object preservation.
 - Generated all 25 finished sample previews with the actual production compositor. Preset selection loads a WebP instead of recomputing the floor on a phone. Missing assets fall back to live rendering. Customer photos stay on the device.
 - Generated 300px WebP swatches: the complete thumbnail set drops from 4,754,696 to 646,808 bytes (86.4% smaller). Previews are lazy selected, not all downloaded at page load.
 - Added a default comparison without JavaScript, local title/description/H1, visible catalog, keyboard-accessible color choices and comparison slider, and proper rendering/error state. Failed rendering no longer mislabels the original slab as a successfully coated floor.
 - Added in-body homepage links to the visualizer and calculator; added an existing Sunrise Beach collection photo and useful estimate/finish links to the strongest nearby query opportunity, without inventing project date, square footage, color or customer testimony.
-- Improved calculator cost intent and visible pricing; removed dependency on the browser's implicit window.event for square-foot presets.
+- Made the calculator heading explicit and removed public rate tables and example prices. Removed numeric kit-price claims from the homepage and blog. The former cost article redirects to the calculator; there is no standalone cost page. Removed dependency on the browser's implicit window.event for square-foot presets.
 - Corrected 31 quote forms plus the calculator so a sendBeacon queue result cannot masquerade as confirmed webhook delivery. HTTP-acknowledged requests succeed; failed requests retain retry handling. No real test lead was submitted.
 
 ## What still determines traffic

@@ -24,7 +24,7 @@ context.fvLoadImage = async src => {
   const room = context.ROOMS.garage;
   const output = path.join(root, 'visualizer-previews', room.previewSet);
   fs.mkdirSync(output, { recursive: true });
-  const colors = vm.runInContext('FLAKE_COLORS', context);
+  const colors = vm.runInContext('FLAKE_COLORS', context).filter(color => process.argv.length <= 2 || process.argv.slice(2).includes(color.slug));
   for (const color of colors) {
     const url = await new Promise(resolve => context.fvComposite(room, color, resolve));
     if (!url || !url.startsWith('data:')) throw new Error('Could not render ' + color.slug);

@@ -149,12 +149,12 @@ test('1280px catalog textures retain the reference 520px flake scale', () => {
 
 test('preset preview failure falls back to the live renderer without leaking a stale color', () => {
   const { context: c, elements } = setup();
-  c.ROOMS.garage.previewSet = 'garage-v2';
+  c.ROOMS.garage.previewSet = 'garage-v3';
   const pending = [];
   c.fvComposite = (room, color, done, cancelled) => pending.push({ done, cancelled });
   c.fvApplyColor(true);
   const image = elements.get('fvImgAfter');
-  assert.equal(image.src, '/visualizer-previews/garage-v2/First.webp');
+  assert.equal(image.src, '/visualizer-previews/garage-v3/First.webp');
   assert.equal(pending.length, 0);
   const firstError = image.onerror;
   c.fvState.color = {name:'Second',slug:'Second'};
@@ -181,7 +181,7 @@ test('render failure never labels the original concrete as a coated floor', () =
 
 test('customer photos always render locally instead of using a preset preview', () => {
   const { context: c, elements } = setup();
-  c.ROOMS.custom = {alt:'My garage',previewSet:'garage-v2'};
+  c.ROOMS.custom = {alt:'My garage',previewSet:'garage-v3'};
   c.fvState.room = 'custom';
   let renders = 0;
   c.fvComposite = (room, color, done) => { renders++; done('data:my-photo'); };
@@ -201,11 +201,11 @@ test('all 25 sample previews and swatches exist, with a static comparison before
   const colors = JSON.parse(html.match(/const FLAKE_COLORS = (\[.*?\]);/s)[1]);
   for (const color of colors) {
     for (const suffix of ['.webp','-swatch.webp']) {
-      assert.ok(fs.existsSync(path.join(__dirname,'..','visualizer-previews','garage-v2',color.slug+suffix)),color.slug+suffix);
+      assert.ok(fs.existsSync(path.join(__dirname,'..','visualizer-previews','garage-v3',color.slug+suffix)),color.slug+suffix);
     }
   }
-  assert.match(html, /id="fvImgBefore" src="\/visualizer-room-garage-20260913.webp"/);
-  assert.match(html, /id="fvImgAfter" src="\/visualizer-previews\/garage-v2\/Arrowhead.webp"/);
+  assert.match(html, /id="fvImgBefore" src="\/bare-concrete-garage-floor-springfield-mo.webp"/);
+  assert.match(html, /id="fvImgAfter" src="\/visualizer-previews\/garage-v3\/Arrowhead.webp"/);
   const staticGrid = html.split('id="fvColorGrid">')[1].split('<!-- FAVORITES')[0];
   assert.equal((staticGrid.match(/epoxy flake blend/g) || []).length,25);
 });
