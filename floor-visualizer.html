@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Epoxy Floor Visualizer | See Garage Floor Colors | Shipp-Mates Epoxy</title>
-<meta name="description" content="Use the Shipp-Mates Epoxy Floor Visualizer to compare garage floor coating colors and flake finishes before your installation. Find your favorite and get an instant price range.">
-<link rel="canonical" href="https://shippmatesepoxy.com/floor-visualizer.html"><link rel="preload" as="image" href="/bare-concrete-garage-floor-before-epoxy-coating-missouri.webp" fetchpriority="high">
+<title>Epoxy Floor Visualizer | Lake of the Ozarks | Shipp-Mates</title>
+<meta name="description" content="Preview 25 epoxy flake colors on a garage or your own photo. Compare floor coatings for Lake of the Ozarks, Osage Beach and Camdenton, then estimate your project.">
+<link rel="canonical" href="https://shippmatesepoxy.com/floor-visualizer.html"><link rel="preload" as="image" href="/visualizer-previews/garage-v2/Arrowhead.webp" fetchpriority="high">
 <meta property="og:title" content="Epoxy Floor Visualizer | See Garage Floor Colors | Shipp-Mates Epoxy">
-<meta property="og:description" content="Use the Shipp-Mates Epoxy Floor Visualizer to compare garage floor coating colors and flake finishes before your installation. Find your favorite and get an instant price range.">
+<meta property="og:description" content="Preview 25 epoxy flake colors on a garage or your own photo. Compare floor coatings for Lake of the Ozarks, Osage Beach and Camdenton, then estimate your project.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shippmatesepoxy.com/floor-visualizer.html">
 <meta property="og:image" content="https://shippmatesepoxy.com/epoxy-garage-floor-01.jpg">
@@ -167,7 +167,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.75);padding:56px 0 28px}
 .fv-color-card{position:relative;background:#fff;border:2px solid var(--gray-200);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s;text-align:left}
 .fv-color-card:hover{transform:translateY(-3px);border-color:var(--navy)}
 .fv-color-card.fv-color-selected{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
-.fv-color-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.fv-color-choice{display:block;color:inherit;text-decoration:none}
+.fv-color-choice:focus-visible{outline:3px solid #b9ddfa;outline-offset:-3px}
+.fv-color-card img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block}
 .fv-color-info{padding:10px 12px}
 .fv-color-name{font-size:13px;font-weight:800;color:var(--gray-800)}
 .fv-color-selected .fv-color-name{color:var(--navy)}
@@ -277,8 +279,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <li><a href="/camdenton-mo.html">Camdenton, MO</a></li>
         <li><a href="/eldon-mo.html">Eldon, MO</a></li>
         <li><a href="/lake-ozark-mo.html">Lake of the Ozarks, MO</a></li>
-        <li><a href="/osage-beach-mo.html">Osage Beach, MO</a></li>
-        <li><a href="/camdenton-mo.html">Camdenton, MO</a></li>
+        <li><a href="/sunrise-beach-mo.html">Sunrise Beach, MO</a></li>
+        <li><a href="/laurie-mo.html">Laurie, MO</a></li>
         <li><a href="/contact.html">View All Areas</a></li>
       </ul>
     </li>
@@ -301,8 +303,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <section class="fv-hero">
   <div class="wrap">
     <div class="fv-eyebrow">Shipp-Mates Epoxy — Interactive Floor Visualizer</div>
-    <h1 class="fv-h1">See Your New Floor Before We Install It</h1>
-    <p class="fv-sub">Explore our most popular floor finishes and see how each color can transform your garage, basement, or shop.</p>
+    <h1 class="fv-h1">Preview Your Epoxy Garage Floor</h1>
+    <p class="fv-sub">Compare 25 real flake blends in our sample garage or upload your own photo. Serving Lake of the Ozarks, Osage Beach, Camdenton and surrounding communities.</p>
 
     <!-- ROOM SELECTOR (rendered from ROOMS config) -->
     <div style="margin-top:30px">
@@ -324,14 +326,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <div class="fv-layout">
       <div>
         <div class="fv-stage-card">
-          <div class="fv-stage" id="fvStage">
-            <img class="fv-img" id="fvImgBefore" src="" alt="" loading="eager">
+          <div class="fv-stage" id="fvStage" aria-busy="false">
+            <img class="fv-img" id="fvImgBefore" src="/visualizer-room-garage-20260913.webp" alt="Sample garage before floor coating" width="1000" height="1000" loading="eager">
             <div class="fv-tag fv-tag-before">Before</div>
-            <div class="fv-after-wrap" id="fvAfterWrap">
-              <img class="fv-img" id="fvImgAfter" src="" alt="" loading="eager">
+            <div class="fv-after-wrap" id="fvAfterWrap" style="clip-path:inset(0 0 0 50%)">
+              <img class="fv-img" id="fvImgAfter" src="/visualizer-previews/garage-v2/Arrowhead.webp" alt="Sample garage with Arrowhead epoxy flake coating preview" width="1000" height="1000" loading="eager" fetchpriority="high">
             </div>
             <div class="fv-tag fv-tag-after">After</div>
-            <div class="fv-divider" id="fvDivider"></div>
+            <div class="fv-divider" id="fvDivider" role="slider" tabindex="0" aria-label="Compare original and coated floor" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="left:50%"></div>
             <div class="fv-rendering-indicator" id="fvRenderingIndicator">Rendering your floor…</div>
 
             <!-- CALIBRATION OVERLAY: shown right after a customer uploads their own photo -->
@@ -365,7 +367,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
         <div class="fv-current-color">
           <div class="fv-current-label">Your Floor</div>
-          <div class="fv-current-name" id="fvCurrentName">—</div>
+          <div class="fv-current-name" id="fvCurrentName" aria-live="polite">ARROWHEAD</div>
         </div>
 
         <div class="fv-share-row">
@@ -393,7 +395,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <div class="fv-section-eyebrow">Flake Floor Colors</div>
       <h2 class="fv-section-title">Pick a Blend to Preview</h2>
     </div>
-    <div class="fv-color-grid" id="fvColorGrid"></div>
+    <noscript><p>Enable JavaScript to change the preview or upload a photo. Browse the color catalog using the links below.</p></noscript>
+    <div class="fv-color-grid" id="fvColorGrid">
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Arrowhead-swatch.webp" alt="Arrowhead epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Arrowhead</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Houndstooth-swatch.webp" alt="Houndstooth epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Houndstooth</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Feather-Grey-swatch.webp" alt="Feather Grey epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Feather Grey</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Gravel-swatch.webp" alt="Gravel epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Gravel</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Coyote-swatch.webp" alt="Coyote epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Coyote</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Mushroom-swatch.webp" alt="Mushroom epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Mushroom</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Nightfall-swatch.webp" alt="Nightfall epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Nightfall</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Outback-swatch.webp" alt="Outback epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Outback</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Lake-Ozark-swatch.webp" alt="Lake Ozark epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Lake Ozark</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Tidal-Wave-swatch.webp" alt="Tidal Wave epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Tidal Wave</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Wombat-swatch.webp" alt="Wombat epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Wombat</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Creekbed-swatch.webp" alt="Creekbed epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Creekbed</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Domino-swatch.webp" alt="Domino epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Domino</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Carbon-swatch.webp" alt="Carbon epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Carbon</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Safari-swatch.webp" alt="Safari epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Safari</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Shoreline-swatch.webp" alt="Shoreline epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Shoreline</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Comet-swatch.webp" alt="Comet epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Comet</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Agate-swatch.webp" alt="Agate epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Agate</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Cascade-swatch.webp" alt="Cascade epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Cascade</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Europa-swatch.webp" alt="Europa epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Europa</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Husky-swatch.webp" alt="Husky epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Husky</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Yukon-swatch.webp" alt="Yukon epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Yukon</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Denali-swatch.webp" alt="Denali epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Denali</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Yosemite-swatch.webp" alt="Yosemite epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Yosemite</div></div></a></div>
+<div class="fv-color-card"><a class="fv-color-choice" href="/colors.html"><img src="/visualizer-previews/garage-v2/Slate-swatch.webp" alt="Slate epoxy flake blend" loading="lazy" width="300" height="300"><div class="fv-color-info"><div class="fv-color-name">Slate</div></div></a></div>
+    </div>
 
     <!-- FAVORITES -->
     <div class="fv-favorites">
@@ -495,7 +524,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <div class="footer-col">
 <h4>Popular Areas</h4>
 <ul>
-<li><a href="/osage-beach-mo.html">Osage Beach</a></li><li><a href="/camdenton-mo.html">Camdenton</a></li><li><a href="/eldon-mo.html">Eldon</a></li><li><a href="/lake-ozark-mo.html">Lake of the Ozarks</a></li><li><a href="/osage-beach-mo.html">Osage Beach</a></li><li><a href="/camdenton-mo.html">Camdenton</a></li>
+<li><a href="/osage-beach-mo.html">Osage Beach</a></li><li><a href="/camdenton-mo.html">Camdenton</a></li><li><a href="/eldon-mo.html">Eldon</a></li><li><a href="/lake-ozark-mo.html">Lake of the Ozarks</a></li><li><a href="/sunrise-beach-mo.html">Sunrise Beach</a></li><li><a href="/laurie-mo.html">Laurie</a></li>
 <li><a href="/contact.html">View All Areas</a></li>
 </ul>
 </div>
@@ -564,9 +593,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 var ROOMS = {
   garage: {
     label: 'Sample Garage',
-    image: '/bare-concrete-garage-floor-before-epoxy-coating-missouri.webp',
-    alt: 'Garage floor room for the Shipp-Mates Epoxy Floor Visualizer',
-    floorClipPath: 'polygon(0% 21.3%, 86.5% 21.1%, 88.8% 21.83%, 90.4% 22.17%, 92.1% 22.67%, 93.8% 22.92%, 95.4% 23.33%, 97.1% 23.75%, 98.8% 24.08%, 100% 24.35%, 100% 100%, 0% 100%)',
+    image: '/visualizer-room-garage-20260913.webp',
+    alt: 'Sample garage with bare concrete for comparing Shipp-Mates floor colors',
+    floorClipPath: 'polygon(0% 18.7%, 24.7% 18.8%, 37.7% 18.7%, 51.8% 18.4%, 61% 18.8%, 75% 19.1%, 100% 20.4%, 100% 100%, 0% 100%)',
+    preserveObjects: false, // Empty sample garage: coat over all slab stains.
+    previewSet: 'garage-v2',
     // horizonY (eye-level vanishing line, % of image height) may be set
     // per room, but is normally left off: the estimate derived from the
     // floor outline is tuned to keep flake detail readable all the way to
@@ -981,18 +1012,42 @@ function fvApplyColor(skipTrack){
     var room = ROOMS[fvState.room];
     var indicator = document.getElementById('fvRenderingIndicator');
     var afterImg = document.getElementById('fvImgAfter');
+    var stage = document.getElementById('fvStage');
+    indicator.textContent = 'Rendering your floor…';
     indicator.classList.add('fv-rendering-show');
-    fvComposite(room, color, function(url){
-      if (request !== fvRenderRequest) return;
-      afterImg.style.opacity = '0';
-      setTimeout(function(){
-        if (request !== fvRenderRequest) return;
-        afterImg.src = url;
-        afterImg.alt = room.alt + ' coated in ' + color.name;
+    stage.setAttribute('aria-busy', 'true');
+    afterImg.style.opacity = '0';
+    var cancelled = function(){ return request !== fvRenderRequest; };
+    function finish(url, allowFallback){
+      if (cancelled()) return;
+      if (!url) {
+        indicator.textContent = 'Preview could not load. Select a color to retry.';
+        stage.setAttribute('aria-busy', 'false');
+        return;
+      }
+      afterImg.onload = function(){
+        if (cancelled()) return;
         afterImg.style.opacity = '1';
         indicator.classList.remove('fv-rendering-show');
-      }, 100);
-    }, function(){ return request !== fvRenderRequest; });
+        stage.setAttribute('aria-busy', 'false');
+      };
+      afterImg.onerror = function(){
+        if (cancelled()) return;
+        if (allowFallback) renderLive(); else finish(null);
+      };
+      afterImg.alt = room.alt + ' coated in ' + color.name;
+      afterImg.src = url;
+    }
+    function renderLive(){
+      fvComposite(room, color, function(url){ finish(url, false); }, cancelled);
+    }
+    // Only this exact preset has baked previews. Customer photos always use
+    // the live compositor and are never uploaded to generate a preview.
+    if (fvState.room === 'garage' && room.previewSet) {
+      finish('/visualizer-previews/' + room.previewSet + '/' + color.slug + '.webp', true);
+    } else {
+      renderLive();
+    }
   }
   if (!skipTrack && color) fvTrack('floor_color_selected', {color: color.slug});
 }
@@ -1008,7 +1063,7 @@ var fvCanvasCache = new Map();
 var fvImageCache = {};
 
 function fvCompositeKey(room, color){
-  return JSON.stringify([room.image, room.floorClipPath, room.horizonY,
+  return JSON.stringify([room.image, room.floorClipPath, room.horizonY, room.preserveObjects,
     color.texture, color.baseCoatColor]);
 }
 
@@ -1386,7 +1441,7 @@ function fvComposite(room, color, callback, shouldCancel){
       ux2.drawImage(mc, 0, 0, ow, oh, 0, 0, bw, bh); // upscale feathers the edge
       return ux2.getImageData(0, 0, bw, bh).data;
     }
-    var objData = fvObjectMask();
+    var objData = room.preserveObjects === false ? null : fvObjectMask();
 
     // ---- STEP 1: build a SEAMLESS, repeat-free flake texture ----------
     // Earlier versions tiled the flake photo directly in screen space and
@@ -1400,22 +1455,12 @@ function fvComposite(room, color, callback, shouldCancel){
     // stamp fades out through a radial gradient, no hard edge exists
     // anywhere, and because the stamps wrap, the tile's own borders match
     // perfectly — so it can repeat forever with nothing to see.
-    // CHIP SCALE — this is the bug that made the flakes look enormous.
-    // The previous version cropped 270px of the source photo and drew it
-    // into 337px, i.e. it MAGNIFIED the product photo 1.25x. Source chips
-    // (~30px) became ~37px, so a 512px tile held only ~14 chips, and that
-    // tile was then stretched across ~794px of the near floor — roughly
-    // 58px per chip. Real 1/4" full-broadcast flake reads at ~12-15px at
-    // that distance. Chips are now DOWNSCALED so the tile carries ~37 of
-    // them, cutting rendered chip size by about 75%.
+    // Build detailed chips in texture space; room projection below sets their visible size.
     var TILE = 768;
     var CHIPS_ACROSS_TILE = 72;
-    // The reference renderer is calibrated to 520px texture images. Our
-    // catalog swatches are 1280px: normalize their pixel density so enlarging
-    // a source image cannot enlarge the physical flakes on the floor.
-    var SRC_CHIP_PX = 30 * (texImg.naturalWidth / 520);
+    var SRC_CHIP_PX = 30 * (texImg.naturalWidth / 520);               // approx chip size in the product photos
     var chipInTile = TILE / CHIPS_ACROSS_TILE;
-    var chipScale = chipInTile / SRC_CHIP_PX; // ~0.46 => a real reduction, not a magnification
+    var chipScale = chipInTile / SRC_CHIP_PX; // reduce the source chips in texture space
 
     var tileCanvas = document.createElement('canvas');
     tileCanvas.width = TILE; tileCanvas.height = TILE;
@@ -1447,7 +1492,6 @@ function fvComposite(room, color, callback, shouldCancel){
     var ds = Math.max(6, cropW * chipScale);        // reduced, never magnified
     var stampSize = Math.max(8, Math.round(ds / 1.5));
     var stampR = stampSize / 2;
-    var maxOffX = Math.max(1, srcW - cropW), maxOffY = Math.max(1, srcH - cropH);
     var stampCanvas = document.createElement('canvas');
     stampCanvas.width = stampSize; stampCanvas.height = stampSize;
     var stampCtx = stampCanvas.getContext('2d');
@@ -1499,15 +1543,21 @@ function fvComposite(room, color, callback, shouldCancel){
       // slight brightness/saturation shift. Real flake is hand-broadcast,
       // so chip size and colour drift across a floor; without this the
       // eye eventually picks up machine-like uniformity.
-      var sJit = 0.90 + rnd() * 0.20;          // +/- ~10% chip size
-      var dsj = ds * sJit;
+      // Mix smaller fragments with medium chips and occasional larger pieces.
+      // Change the source crop, keeping the stamp footprint fully covered.
+      var sizePick = rnd();
+      var sJit = sizePick < 0.55 ? 0.55 + rnd() * 0.30
+        : sizePick < 0.92 ? 0.85 + rnd() * 0.30 : 1.15 + rnd() * 0.25;
+      var sampleW = Math.min(srcW, cropW / sJit);
+      var sampleH = Math.min(srcH, cropH / sJit);
+      var dsj = ds;
       // Brightness/saturation drift is kept small. A whole stamp shifted 5%
       // is a ~123px patch of the tile shifted 5%, i.e. another cloud. The
       // high-pass below would flatten most of it anyway; keeping it tight
       // means there is less for the high-pass to have to undo.
       stampCtx.filter = 'brightness(' + (0.98 + rnd() * 0.04).toFixed(3) +
                         ') saturate(' + (0.97 + rnd() * 0.06).toFixed(3) + ')';
-      stampCtx.drawImage(texImg, rnd() * maxOffX, rnd() * maxOffY, cropW, cropH, -dsj / 2, -dsj / 2, dsj, dsj);
+      stampCtx.drawImage(texImg, rnd() * (srcW - sampleW), rnd() * (srcH - sampleH), sampleW, sampleH, -dsj / 2, -dsj / 2, dsj, dsj);
       stampCtx.filter = 'none';
       stampCtx.restore();
       stampCtx.globalCompositeOperation = 'destination-in';
@@ -1709,12 +1759,9 @@ function fvComposite(room, color, callback, shouldCancel){
       : polyTopY - 0.16 * Math.max(1, polyBotY - polyTopY);
     if (horizonY > polyTopY - 4) horizonY = polyTopY - 4; // keep the floor strictly below the horizon
 
-    // NEAR SCALE. One tile carries CHIPS_ACROSS_TILE chips, so the span a
-    // tile covers at the very front sets the rendered chip size there.
-    // 0.40 * floorWidth over ~37 chips lands near-camera flake at roughly
-    // 13-14px in a 1280px photo, matching the reference installs (the old
-    // 0.62 over ~14 chips gave ~58px, the "giant flake" problem).
-    var nearSpan = Math.max(90, bw * 0.40);
+    // Room-wide view: 55% smaller than the previous 0.40-width projection.
+    // Scaling with floor width keeps the same appearance at every output size.
+    var nearSpan = Math.max(1, bw * 0.18);
     var dNear = polyBotY - horizonY;
     var Acoef = (dNear * dNear) / nearSpan;
     var Bcoef = dNear / nearSpan;
@@ -2216,7 +2263,7 @@ function fvComposite(room, color, callback, shouldCancel){
     while (fvCanvasCache.size > 8) fvCanvasCache.delete(fvCanvasCache.keys().next().value);
     callback(url);
   }).catch(function(){
-    callback(room.image); // graceful fallback: show the unmodified room photo
+    callback(null); // Never present an unmodified photo as a successful coating preview.
   });
 }
 
@@ -2231,6 +2278,8 @@ function fvUpdateQuoteLink(){
 
 // ---------- before / after slider ----------
 function fvSetReveal(pct){
+  document.getElementById('fvDivider').setAttribute('aria-valuenow', pct);
+  document.getElementById('fvDivider').setAttribute('aria-valuetext', pct + '% coated floor');
   pct = Math.max(0, Math.min(100, pct));
   fvState.reveal = pct;
   document.getElementById('fvAfterWrap').style.clipPath = 'inset(0 0 0 ' + (100 - pct) + '%)';
@@ -2242,6 +2291,15 @@ function fvSetReveal(pct){
 
 (function initDrag(){
   var stage = document.getElementById('fvStage');
+  document.getElementById('fvDivider').addEventListener('keydown', function(e){
+    var value = fvState.reveal;
+    if (e.key === 'ArrowLeft') value += 5;
+    else if (e.key === 'ArrowRight') value -= 5;
+    else if (e.key === 'Home') value = 0;
+    else if (e.key === 'End') value = 100;
+    else return;
+    e.preventDefault(); fvSetReveal(Math.max(0, Math.min(100, value)));
+  });
   var divider = document.getElementById('fvDivider');
   var dragging = false;
 
@@ -2279,11 +2337,12 @@ function fvRenderColorGrid(){
     var isFav = favs.indexOf(color.slug) !== -1;
     card.innerHTML =
       '<button type="button" class="fv-fav-btn' + (isFav ? ' fv-fav-active' : '') + '" aria-label="Save ' + color.name + ' to favorites" data-slug="' + color.slug + '">' + (isFav ? '❤️' : '🤍') + '</button>' +
-      '<img src="' + color.thumb + '" alt="Epoxy flake color ' + color.name + ' preview" loading="lazy" width="240" height="240">' +
-      '<div class="fv-color-info"><div class="fv-color-name">' + color.name + '</div></div>' +
+      '<a href="/colors.html" class="fv-color-choice" aria-label="Preview ' + color.name + '"><img src="/visualizer-previews/garage-v2/' + color.slug + '-swatch.webp" alt="Epoxy flake color ' + color.name + ' preview" loading="lazy" width="240" height="240">' +
+      '<div class="fv-color-info"><div class="fv-color-name">' + color.name + '</div></div></a>' +
       (fvState.color && fvState.color.slug === color.slug ? '<div class="fv-selected-check">✓</div>' : '');
     card.addEventListener('click', function(e){
       if (e.target.closest('.fv-fav-btn')) return;
+      e.preventDefault();
       fvState.color = color;
       fvApplyColor(false);
     });
@@ -2347,7 +2406,7 @@ function fvRenderFavorites(){
     if (!color) return;
     var item = document.createElement('div');
     item.className = 'fv-fav-item';
-    item.innerHTML = '<img src="' + color.thumb + '" alt="Favorite epoxy flake color ' + color.name + '" loading="lazy" width="160" height="160"><div>' + color.name + '</div>';
+    item.innerHTML = '<a href="/colors.html" class="fv-color-choice" aria-label="Preview ' + color.name + '"><img src="/visualizer-previews/garage-v2/' + color.slug + '-swatch.webp" alt="Favorite epoxy flake color ' + color.name + '" loading="lazy" width="160" height="160"><div>' + color.name + '</div>';
     item.querySelector('img').addEventListener('click', function(){
       fvState.system = 'flake';
       fvState.color = color;

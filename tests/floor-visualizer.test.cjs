@@ -12,7 +12,7 @@ function setup() {
   const context = vm.createContext({
     document: { getElementById(id) {
       if (!elements.has(id)) elements.set(id, {
-        style: {}, classList: { add() {}, remove() {}, toggle() {} }
+        style: {}, attrs: {}, setAttribute(k,v) { this.attrs[k]=v; }, classList: { add() {}, remove() {}, toggle() {} }
       });
       return elements.get(id);
     } },
@@ -91,6 +91,7 @@ test('an older render cannot replace the latest selected color', () => {
   pending[1].done('second-preview');
   pending[0].done('stale-preview'); // late image/texture request
   timers.forEach(fn => fn());
+  elements.get('fvImgAfter').onload();
   assert.equal(elements.get('fvImgAfter').src, 'second-preview');
   assert.equal(elements.get('fvImgAfter').alt, 'Test garage coated in Second');
 });
@@ -143,4 +144,68 @@ test('1280px catalog textures retain the reference 520px flake scale', () => {
   }
   assert.ok(Math.abs(footprint(1280)-footprint(520)) < 1e-9);
   assert.ok(Math.abs(footprint(2560)-footprint(520)) < 1e-9);
+});
+
+
+test('preset preview failure falls back to the live renderer without leaking a stale color', () => {
+  const { context: c, elements } = setup();
+  c.ROOMS.garage.previewSet = 'garage-v2';
+  const pending = [];
+  c.fvComposite = (room, color, done, cancelled) => pending.push({ done, cancelled });
+  c.fvApplyColor(true);
+  const image = elements.get('fvImgAfter');
+  assert.equal(image.src, '/visualizer-previews/garage-v2/First.webp');
+  assert.equal(pending.length, 0);
+  const firstError = image.onerror;
+  c.fvState.color = {name:'Second',slug:'Second'};
+  c.fvApplyColor(true);
+  firstError();
+  assert.equal(pending.length, 0);
+  image.onerror();
+  assert.equal(pending.length, 1);
+  pending[0].done('data:live-preview');
+  image.onload();
+  assert.equal(image.src, 'data:live-preview');
+  assert.equal(image.style.opacity, '1');
+  assert.equal(elements.get('fvStage').attrs['aria-busy'], 'false');
+});
+
+test('render failure never labels the original concrete as a coated floor', () => {
+  const { context: c, elements } = setup();
+  c.fvComposite = (room, color, done) => done(null);
+  c.fvApplyColor(true);
+  assert.equal(elements.get('fvImgAfter').style.opacity, '0');
+  assert.match(elements.get('fvRenderingIndicator').textContent, /could not load/);
+  assert.equal(elements.get('fvStage').attrs['aria-busy'], 'false');
+});
+
+test('customer photos always render locally instead of using a preset preview', () => {
+  const { context: c, elements } = setup();
+  c.ROOMS.custom = {alt:'My garage',previewSet:'garage-v2'};
+  c.fvState.room = 'custom';
+  let renders = 0;
+  c.fvComposite = (room, color, done) => { renders++; done('data:my-photo'); };
+  c.fvApplyColor(true);
+  assert.equal(renders, 1);
+  assert.equal(elements.get('fvImgAfter').src, 'data:my-photo');
+});
+
+test('sample photo object preservation is part of the render cache key', () => {
+  const { context: c } = setup();
+  const room = {image:'room',floorClipPath:'polygon(0% 20%,100% 20%,100% 100%)'};
+  const color = {texture:'flake'};
+  assert.notEqual(c.fvCompositeKey(room,color),c.fvCompositeKey({...room,preserveObjects:false},color));
+});
+
+test('all 25 sample previews and swatches exist, with a static comparison before JavaScript', () => {
+  const colors = JSON.parse(html.match(/const FLAKE_COLORS = (\[.*?\]);/s)[1]);
+  for (const color of colors) {
+    for (const suffix of ['.webp','-swatch.webp']) {
+      assert.ok(fs.existsSync(path.join(__dirname,'..','visualizer-previews','garage-v2',color.slug+suffix)),color.slug+suffix);
+    }
+  }
+  assert.match(html, /id="fvImgBefore" src="\/visualizer-room-garage-20260913.webp"/);
+  assert.match(html, /id="fvImgAfter" src="\/visualizer-previews\/garage-v2\/Arrowhead.webp"/);
+  const staticGrid = html.split('id="fvColorGrid">')[1].split('<!-- FAVORITES')[0];
+  assert.equal((staticGrid.match(/epoxy flake blend/g) || []).length,25);
 });
