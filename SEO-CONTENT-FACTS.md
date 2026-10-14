@@ -102,7 +102,7 @@ All verified from the repository or the brief:
 
 - Name: Shipp-Mates Epoxy of the Ozarks
 - Phone: 417-255-6890 · Email: shippmatesepoxy@gmail.com
-- Hours: Mon–Fri 9:00am–5:00pm (as published in the site top bar)
+- Hours: Mon–Fri 8:00am–5:00pm (verified against the linked Google Maps business profile October 13, 2026)
 - Locality: Osage Beach, MO (no street address is published or invented)
 - Facebook: https://www.facebook.com/ShippmatesEpoxy
 - Google profile: https://maps.app.goo.gl/2q6oM6fcQEwCEBi98
@@ -138,3 +138,6 @@ field out entirely rather than estimating it.
 
 ## Pricing content — owner instruction September 6, 2026
 Do not publish cost guides, sample budgets or static installation price tables. Send pricing visitors to /instant-quote.html. The retired cost-guide URLs redirect to the calculator. This supersedes earlier audit recommendations to expand the cost guide.
+
+## October 13, 2026 content and indexing update
+Gravois Mills and Village of Four Seasons now contain original location-specific planning content and are indexable. Ten other thin town stubs remain noindex pending substantive content. The reviews page links to the actual Google profile without asserting a stale review count or inventing testimonials. New guides are published October 13, 2026 under the company author; they are not represented as personally written or reviewed by Blake.
