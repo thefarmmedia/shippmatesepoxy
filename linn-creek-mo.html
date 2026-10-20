@@ -78,7 +78,7 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:32px 40px
 .areas-wrap{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
 .area-tag{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:8px 14px;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-light);transition:border-color .2s,color .2s}
 .area-tag:hover{border-color:var(--red);color:var(--white)}
-.rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
+.rev{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
 @media(max-width:1100px){.ph-inner{grid-template-columns:1fr}.sform{max-width:520px}}
 @media(max-width:768px){
 li{min-width:0}
@@ -158,7 +158,7 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
         <a href="tel:4172556890" class="btn btn-outline">&#128222; 417-255-6890</a>
       </div>
     </div>
-    <div class="sform" id="quote-form">
+    <div class="sform" id="quote-form" data-service-city="Linn Creek, MO">
       <div class="sf-head">Free Quote &#8212; Linn Creek, MO<span class="sf-sub">No obligation &#183; Same-day response</span></div>
       <div class="frow"><div class="fg"><label for="f-first-name">First Name</label><input type="text" placeholder="John" id="f-first-name"/></div><div class="fg"><label for="f-last-name">Last Name</label><input type="text" placeholder="Smith" id="f-last-name"/></div></div>
       <div class="fg"><label for="f-phone">Phone</label><input type="tel" placeholder="417-555-0000" id="f-phone"/></div>
@@ -291,19 +291,23 @@ function submitForm(btn){
       name: (first + ' ' + last).trim(),
       phone: phone,
       email: email,
-      city_zip: find(/city|zip|postal/i),
+      city_zip: find(/city|zip|postal/i) || (box.dataset ? box.dataset.serviceCity || '' : ''),
       service: find(/service|coating system/i),
-      sqft: find(/square|sq ?ft|footage/i),
-      notes: find(/detail|project|message|tell us/i),
+      sqft: find(/square|sq ?ft|footage|garage size/i),
+      notes: find(/detail|project|message|tell us|floor condition/i),
       source: 'Shipp-Mates Epoxy of the Ozarks Website Quote Form',
       page: window.location.href,
       page_title: document.title,
       all_fields: fields
     };
 
-    sendLead(payload).then(function(){
+    sendLead(payload).then(function(sent){
       if (btn){ btn.disabled = false; btn.textContent = label; }
-      alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      if (sent){
+        alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      } else {
+        alert("We couldn't send your request. Please call 417-255-6890 or email shippmatesepoxy@gmail.com.");
+      }
     });
   }
 

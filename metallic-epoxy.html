@@ -134,7 +134,7 @@ footer{background:var(--black);border-top:2px solid var(--red);padding:52px 40px
 .sticky-mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--black);border-top:2px solid var(--red);padding:10px 14px;gap:9px}
 .sticky-mob a{flex:1;text-align:center;padding:12px;border-radius:5px;font-family:var(--font-c);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}@media(max-width:380px){.sticky-mob a{font-size:12px;padding:12px 5px;letter-spacing:.03em}}
 .s-call{background:var(--red);color:var(--white)}.s-quote{background:var(--bg3);color:var(--white);border:1px solid var(--border)}
-.rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
+.rev{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}.rev.vis{opacity:1;transform:translateY(0)}
 @media(max-width:1100px){.ph-inner,.two-col,.two-col-prose{grid-template-columns:1fr}.sform,.sticky-sidebar{max-width:520px}.footer-top{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.rev-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
 li{min-width:0}
@@ -331,8 +331,6 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
         <p class="fl-tag">Lake of the Ozarks' premier polyaspartic &amp; epoxy floor coating contractor.</p>
         <div class="fl-soc">
           <a href="https://www.facebook.com/ShippmatesEpoxy" class="fs-a" target="_blank" rel="noopener" aria-label="Shipp-Mates Epoxy on Facebook">f</a>
-          <a href="#" class="fs-a" target="_blank">ig</a>
-          <a href="#" class="fs-a" target="_blank">tt</a>
           <a href="https://maps.app.goo.gl/2q6oM6fcQEwCEBi98" class="fs-a" target="_blank" rel="noopener" aria-label="Shipp-Mates Epoxy on Google">G</a>
         </div>
       </div>
@@ -409,19 +407,23 @@ button.hamburger{background:none;border:none;color:inherit;font:inherit;cursor:p
       name: (first + ' ' + last).trim(),
       phone: phone,
       email: email,
-      city_zip: find(/city|zip|postal/i),
+      city_zip: find(/city|zip|postal/i) || (box.dataset ? box.dataset.serviceCity || '' : ''),
       service: find(/service|coating system/i),
-      sqft: find(/square|sq ?ft|footage/i),
-      notes: find(/detail|project|message|tell us/i),
+      sqft: find(/square|sq ?ft|footage|garage size/i),
+      notes: find(/detail|project|message|tell us|floor condition/i),
       source: 'Shipp-Mates Epoxy of the Ozarks Website Quote Form',
       page: window.location.href,
       page_title: document.title,
       all_fields: fields
     };
 
-    sendLead(payload).then(function(){
+    sendLead(payload).then(function(sent){
       if (btn){ btn.disabled = false; btn.textContent = label; }
-      alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      if (sent){
+        alert("Thank you! We'll be in touch within 1 business day.\n\nFor immediate help call 417-255-6890");
+      } else {
+        alert("We couldn't send your request. Please call 417-255-6890 or email shippmatesepoxy@gmail.com.");
+      }
     });
   }
 

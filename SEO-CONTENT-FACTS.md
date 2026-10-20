@@ -141,3 +141,12 @@ Do not publish cost guides, sample budgets or static installation price tables. 
 
 ## October 13, 2026 content and indexing update
 Gravois Mills and Village of Four Seasons now contain original location-specific planning content and are indexable. Ten other thin town stubs remain noindex pending substantive content. The reviews page links to the actual Google profile without asserting a stale review count or inventing testimonials. New guides are published October 13, 2026 under the company author; they are not represented as personally written or reviewed by Blake.
+
+## October 20, 2026 correction and current indexing policy
+
+The ten remaining town templates have been replaced with distinct service-planning content and
+are now indexable, bringing sitemap coverage to 52 pages. This supersedes the historical noindex
+policy above. The homepage and About review placeholders were still present and have now been
+removed. No rating, review count or local completed-project detail was invented.
+Authenticated Search Console inspection is still needed to verify Google-selected canonicals
+and exclusion reasons. Indexable does not mean indexed or ranking.

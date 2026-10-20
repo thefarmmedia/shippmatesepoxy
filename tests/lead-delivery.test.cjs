@@ -29,4 +29,41 @@ for (const name of fs.readdirSync(root).filter(name => name.endsWith('.html'))) 
     context.fetch = async () => ({ ok: true });
     assert.equal(await context.sendLead({ name: 'Test' }), true);
   });
+
+  const submit = html.match(/function submitForm\(btn\)\s*\{[\s\S]*?(?=\n\s*function leadFormBox)/)?.[0];
+  if (!submit) continue;
+  test(name + ': the form distinguishes failed delivery from accepted delivery', async () => {
+    const fields = { 'First Name': 'Test', Phone: '417-555-0100', 'Garage Size': '2-Car Garage', 'Floor Condition': 'Cracks near the door' };
+    const box = {
+      dataset: { serviceCity: 'Lebanon, MO' },
+      querySelectorAll() { return Object.entries(fields).map(([label, value]) => ({
+        querySelector(selector) { return selector === 'label' ? { textContent: label } : { value }; }
+      })); }
+    };
+    let accepted = false;
+    let payload;
+    const alerts = [];
+    const context = vm.createContext({
+      document: { title: 'Garage Floors' }, window: { location: { href: originForTest(name) } },
+      leadFormBox: () => box, alert: message => alerts.push(message),
+      sendLead: async data => { payload = data; return accepted; }
+    });
+    vm.runInContext(submit, context);
+    const button = { textContent: 'Request Quote', disabled: false };
+    context.submitForm(button);
+    await new Promise(resolve => setImmediate(resolve));
+    assert.match(alerts.pop(), /couldn't send/i);
+    assert.equal(button.disabled, false);
+    assert.equal(button.textContent, 'Request Quote');
+    assert.equal(payload.city_zip, 'Lebanon, MO');
+    assert.equal(payload.sqft, '2-Car Garage');
+    assert.equal(payload.notes, 'Cracks near the door');
+    accepted = true;
+    context.submitForm(button);
+    await new Promise(resolve => setImmediate(resolve));
+    assert.match(alerts.pop(), /Thank you/i);
+    assert.equal(button.disabled, false);
+  });
 }
+
+function originForTest(name) { return 'https://shippmatesepoxy.com/' + name; }
