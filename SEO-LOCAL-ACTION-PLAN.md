@@ -20,7 +20,7 @@ map-pack visibility than anything on the website. This is the work only you can 
 - Add every service individually (epoxy garage floors, polyaspartic coatings, acid staining,
   metallic epoxy, quartz broadcast, grind and seal, patio coatings, commercial floors,
   concrete repair) with a short honest description each.
-- Add hours: Mon–Fri 9:00am–5:00pm.
+- Keep hours aligned with the verified profile: Mon–Fri 8:00am–5:00pm.
 - Upload **real before-and-after photos weekly**. Geotagging is not required; consistency is.
 - Post a Google Business Profile update at least twice a month — a finished job, a colour, a
   seasonal note. Short is fine.
